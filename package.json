@@ -1,0 +1,27 @@
+{
+  "name": "dlas-bangladesh",
+  "version": "2.0.0",
+  "description": "ডিজিটাল আইনগত সহায়তা পোর্টাল (DLAS) — Five Doors, One Record. Integrated Digital Legal Aid System for Bangladesh.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node tests/smoke-test.js && node tests/test-ain-shohay-api.js",
+    "test:smoke": "node tests/smoke-test.js",
+    "test:api": "node tests/test-ain-shohay-api.js",
+    "db:inspect": "node scripts/inspect-schema.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "dlas",
+    "legal-aid",
+    "bangladesh",
+    "nlaso",
+    "five-doors-one-record",
+    "adlasb"
+  ],
+  "author": "DLAS Engineering Team",
+  "license": "MIT"
+}

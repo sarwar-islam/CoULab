@@ -1,0 +1,317 @@
+{
+  "generatedAt": "2026-09-27T00:18:22.756Z",
+  "passed": 49,
+  "total": 49,
+  "byCriterion": {
+    "Integration": {
+      "passed": 16,
+      "total": 16
+    },
+    "Technical quality": {
+      "passed": 6,
+      "total": 6
+    },
+    "Inclusion": {
+      "passed": 3,
+      "total": 3
+    },
+    "Service impact": {
+      "passed": 6,
+      "total": 6
+    },
+    "Privacy & safety": {
+      "passed": 9,
+      "total": 9
+    },
+    "Presentation": {
+      "passed": 2,
+      "total": 2
+    },
+    "Innovation": {
+      "passed": 5,
+      "total": 5
+    },
+    "Feasibility": {
+      "passed": 2,
+      "total": 2
+    }
+  },
+  "database": {
+    "channels": [
+      {
+        "channel": "ASSISTED_UDC",
+        "n": 3
+      },
+      {
+        "channel": "DLAO_WALKIN",
+        "n": 1
+      },
+      {
+        "channel": "HELPLINE",
+        "n": 2
+      },
+      {
+        "channel": "USSD_SMS",
+        "n": 1
+      },
+      {
+        "channel": "VOICE_IVR",
+        "n": 1
+      },
+      {
+        "channel": "WEB",
+        "n": 3
+      }
+    ],
+    "spineApps": 11,
+    "jsonApps": 30,
+    "auditEntries": 16
+  },
+  "results": [
+    {
+      "criterion": "Integration",
+      "name": "Door 1 web form saves an application",
+      "pass": true
+    },
+    {
+      "criterion": "Technical quality",
+      "name": "Web application mirrored into SQLite case spine",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Door 2 voice/IVR saves a real application",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Door 3 USSD feature phone saves a real application",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Door 4 UDC assisted saves a real application",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Door 5 16699 helpline saves a real application",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Representative filing saves with consent scope",
+      "pass": true
+    },
+    {
+      "criterion": "Inclusion",
+      "name": "Offline-captured record syncs on reconnect (T9)",
+      "pass": true
+    },
+    {
+      "criterion": "Technical quality",
+      "name": "Offline replay is idempotent (no duplicate)",
+      "pass": true
+    },
+    {
+      "criterion": "Service impact",
+      "name": "Citizen tracks status with ID + last 4 digits",
+      "pass": true
+    },
+    {
+      "criterion": "Privacy & safety",
+      "name": "Tracking with wrong digits reveals nothing",
+      "pass": true
+    },
+    {
+      "criterion": "Privacy & safety",
+      "name": "Anonymous user cannot read cases (401)",
+      "pass": true
+    },
+    {
+      "criterion": "Privacy & safety",
+      "name": "Citizen cannot read case list (403)",
+      "pass": true
+    },
+    {
+      "criterion": "Privacy & safety",
+      "name": "Citizen cannot elevate to officer (refused)",
+      "pass": true
+    },
+    {
+      "criterion": "Privacy & safety",
+      "name": "Wrong provider PIN rejected (no master PIN)",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Single login resolves officer.joypurhat as DLAO_OFFICER",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Single login resolves mediator.joypurhat as MEDIATOR",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Single login resolves helpline.agent1 as HELPLINE",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Single login resolves udc.khagrachari as UDC",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Single login resolves lawyer.kabir as LAWYER",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Single login resolves receiving.dhaka as RECEIVING_DLAO",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Single login resolves support.staff1 as CASE_SUPPORT",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "DLAO queue shows applications from every door",
+      "pass": true
+    },
+    {
+      "criterion": "Presentation",
+      "name": "Five rulebook personas A1-A5 loaded",
+      "pass": true
+    },
+    {
+      "criterion": "Service impact",
+      "name": "Officer accepts application; Case ID issued (human decision)",
+      "pass": true
+    },
+    {
+      "criterion": "Privacy & safety",
+      "name": "Safe-contact rule recorded for Moyuri (A1)",
+      "pass": true
+    },
+    {
+      "criterion": "Privacy & safety",
+      "name": "Sensitive record (A3 Nabila) blocked for helpline view",
+      "pass": true
+    },
+    {
+      "criterion": "Privacy & safety",
+      "name": "Officer sees provenance-tagged audit on A1",
+      "pass": true
+    },
+    {
+      "criterion": "Service impact",
+      "name": "Tracked referral created (B6)",
+      "pass": true
+    },
+    {
+      "criterion": "Service impact",
+      "name": "Receiving DLAO acknowledges referral",
+      "pass": true
+    },
+    {
+      "criterion": "Innovation",
+      "name": "Jurisdiction ping-pong escalation (T2)",
+      "pass": true
+    },
+    {
+      "criterion": "Service impact",
+      "name": "Mediator schedules hybrid session (B2)",
+      "pass": true
+    },
+    {
+      "criterion": "Innovation",
+      "name": "Settlement drafting assistant returns labelled draft (T7)",
+      "pass": true
+    },
+    {
+      "criterion": "Technical quality",
+      "name": "Asynchronous e-signature prepared and verified (T11)",
+      "pass": true
+    },
+    {
+      "criterion": "Service impact",
+      "name": "Panel lawyer posts case update (B5)",
+      "pass": true
+    },
+    {
+      "criterion": "Innovation",
+      "name": "Lawyer inactivity alert raised (T1)",
+      "pass": true
+    },
+    {
+      "criterion": "Innovation",
+      "name": "Multi-agent triage returns explainable agent outputs (T8)",
+      "pass": true
+    },
+    {
+      "criterion": "Technical quality",
+      "name": "Duplicate check flags candidate for human review (T4)",
+      "pass": true
+    },
+    {
+      "criterion": "Innovation",
+      "name": "Document briefing agent returns summary + checklist (T6)",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Related incidents linked, not merged (T3)",
+      "pass": true
+    },
+    {
+      "criterion": "Feasibility",
+      "name": "Admin reporting across all records (B7)",
+      "pass": true
+    },
+    {
+      "criterion": "Technical quality",
+      "name": "SQLite case spine holds applications from all doors",
+      "pass": true
+    },
+    {
+      "criterion": "Integration",
+      "name": "Case spine records at least 4 distinct channels",
+      "pass": true
+    },
+    {
+      "criterion": "Technical quality",
+      "name": "Portal store persisted to disk",
+      "pass": true
+    },
+    {
+      "criterion": "Privacy & safety",
+      "name": "Audit hash chain valid (16 entries)",
+      "pass": true
+    },
+    {
+      "criterion": "Presentation",
+      "name": "Coverage index lists all 23 requirements (23)",
+      "pass": true
+    },
+    {
+      "criterion": "Inclusion",
+      "name": "PWA manifest and service worker served (T10)",
+      "pass": true
+    },
+    {
+      "criterion": "Inclusion",
+      "name": "Home page has skip link, read-aloud and Bangla lang",
+      "pass": true
+    },
+    {
+      "criterion": "Feasibility",
+      "name": "Runs with zero npm dependencies",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="936pt" height="604.8pt" viewBox="0 0 936 604.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-27T06:17:12.590168</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.4, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 604.8 
+L 936 604.8 
+L 936 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 37.44 158.4 
+L 207.36 158.4 
+Q 216 158.4 216 149.76 
+L 216 119.52 
+Q 216 110.88 207.36 110.88 
+L 37.44 110.88 
+Q 28.8 110.88 28.8 119.52 
+L 28.8 149.76 
+Q 28.8 158.4 37.44 158.4 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #eef1f3; stroke: #8a9a93; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 239.04 158.4 
+L 898.56 158.4 
+Q 907.2 158.4 907.2 149.76 
+L 907.2 119.52 
+Q 907.2 110.88 898.56 110.88 
+L 239.04 110.88 
+Q 230.4 110.88 230.4 119.52 
+L 230.4 149.76 
+Q 230.4 158.4 239.04 158.4 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #ffffff; stroke: #8a9a93; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 122.4 160.400391 
+Q 122.4 165.59969 122.4 169.233741 
+" clip-path="url(#p16d0361f2e)" style="fill: none; stroke: #8a9a93; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 124.8 164.433741 
+L 122.4 169.233741 
+L 120 164.433741 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #8a9a93; stroke: #8a9a93; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 37.44 220.32 
+L 207.36 220.32 
+Q 216 220.32 216 211.68 
+L 216 181.44 
+Q 216 172.8 207.36 172.8 
+L 37.44 172.8 
+Q 28.8 172.8 28.8 181.44 
+L 28.8 211.68 
+Q 28.8 220.32 37.44 220.32 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #e2f0f5; stroke: #0f6e8c; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 239.04 220.32 
+L 898.56 220.32 
+Q 907.2 220.32 907.2 211.68 
+L 907.2 181.44 
+Q 907.2 172.8 898.56 172.8 
+L 239.04 172.8 
+Q 230.4 172.8 230.4 181.44 
+L 230.4 211.68 
+Q 230.4 220.32 239.04 220.32 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #ffffff; stroke: #0f6e8c; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 122.4 222.320391 
+Q 122.4 227.51969 122.4 231.153741 
+" clip-path="url(#p16d0361f2e)" style="fill: none; stroke: #0f6e8c; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 124.8 226.353741 
+L 122.4 231.153741 
+L 120 226.353741 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #0f6e8c; stroke: #0f6e8c; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 37.44 282.24 
+L 207.36 282.24 
+Q 216 282.24 216 273.6 
+L 216 243.36 
+Q 216 234.72 207.36 234.72 
+L 37.44 234.72 
+Q 28.8 234.72 28.8 243.36 
+L 28.8 273.6 
+Q 28.8 282.24 37.44 282.24 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #e2f0f5; stroke: #0f6e8c; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 239.04 282.24 
+L 898.56 282.24 
+Q 907.2 282.24 907.2 273.6 
+L 907.2 243.36 
+Q 907.2 234.72 898.56 234.72 
+L 239.04 234.72 
+Q 230.4 234.72 230.4 243.36 
+L 230.4 273.6 
+Q 230.4 282.24 239.04 282.24 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #ffffff; stroke: #0f6e8c; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 122.4 284.240391 
+Q 122.4 289.43969 122.4 293.073741 
+" clip-path="url(#p16d0361f2e)" style="fill: none; stroke: #0f6e8c; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 124.8 288.273741 
+L 122.4 293.073741 
+L 120 288.273741 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #0f6e8c; stroke: #0f6e8c; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 37.44 344.16 
+L 207.36 344.16 
+Q 216 344.16 216 335.52 
+L 216 305.28 
+Q 216 296.64 207.36 296.64 
+L 37.44 296.64 
+Q 28.8 296.64 28.8 305.28 
+L 28.8 335.52 
+Q 28.8 344.16 37.44 344.16 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #e3f1ea; stroke: #0b5d3b; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 239.04 344.16 
+L 898.56 344.16 
+Q 907.2 344.16 907.2 335.52 
+L 907.2 305.28 
+Q 907.2 296.64 898.56 296.64 
+L 239.04 296.64 
+Q 230.4 296.64 230.4 305.28 
+L 230.4 335.52 
+Q 230.4 344.16 239.04 344.16 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #ffffff; stroke: #0b5d3b; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 122.4 346.160391 
+Q 122.4 351.35969 122.4 354.993741 
+" clip-path="url(#p16d0361f2e)" style="fill: none; stroke: #0b5d3b; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 124.8 350.193741 
+L 122.4 354.993741 
+L 120 350.193741 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #0b5d3b; stroke: #0b5d3b; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 37.44 406.08 
+L 207.36 406.08 
+Q 216 406.08 216 397.44 
+L 216 367.2 
+Q 216 358.56 207.36 358.56 
+L 37.44 358.56 
+Q 28.8 358.56 28.8 367.2 
+L 28.8 397.44 
+Q 28.8 406.08 37.44 406.08 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #e3f1ea; stroke: #0b5d3b; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 239.04 406.08 
+L 898.56 406.08 
+Q 907.2 406.08 907.2 397.44 
+L 907.2 367.2 
+Q 907.2 358.56 898.56 358.56 
+L 239.04 358.56 
+Q 230.4 358.56 230.4 367.2 
+L 230.4 397.44 
+Q 230.4 406.08 239.04 406.08 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #ffffff; stroke: #0b5d3b; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 122.4 408.080391 
+Q 122.4 413.27969 122.4 416.913741 
+" clip-path="url(#p16d0361f2e)" style="fill: none; stroke: #0b5d3b; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 124.8 412.113741 
+L 122.4 416.913741 
+L 120 412.113741 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #0b5d3b; stroke: #0b5d3b; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 37.44 468 
+L 207.36 468 
+Q 216 468 216 459.36 
+L 216 429.12 
+Q 216 420.48 207.36 420.48 
+L 37.44 420.48 
+Q 28.8 420.48 28.8 429.12 
+L 28.8 459.36 
+Q 28.8 468 37.44 468 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #fbf1de; stroke: #b7791f; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 239.04 468 
+L 898.56 468 
+Q 907.2 468 907.2 459.36 
+L 907.2 429.12 
+Q 907.2 420.48 898.56 420.48 
+L 239.04 420.48 
+Q 230.4 420.48 230.4 429.12 
+L 230.4 459.36 
+Q 230.4 468 239.04 468 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #ffffff; stroke: #b7791f; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 122.4 470.000391 
+Q 122.4 475.19969 122.4 478.833741 
+" clip-path="url(#p16d0361f2e)" style="fill: none; stroke: #b7791f; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 124.8 474.033741 
+L 122.4 478.833741 
+L 120 474.033741 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #b7791f; stroke: #b7791f; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 37.44 529.92 
+L 207.36 529.92 
+Q 216 529.92 216 521.28 
+L 216 491.04 
+Q 216 482.4 207.36 482.4 
+L 37.44 482.4 
+Q 28.8 482.4 28.8 491.04 
+L 28.8 521.28 
+Q 28.8 529.92 37.44 529.92 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #eef1f3; stroke: #8a9a93; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 239.04 529.92 
+L 898.56 529.92 
+Q 907.2 529.92 907.2 521.28 
+L 907.2 491.04 
+Q 907.2 482.4 898.56 482.4 
+L 239.04 482.4 
+Q 230.4 482.4 230.4 491.04 
+L 230.4 521.28 
+Q 230.4 529.92 239.04 529.92 
+z
+" clip-path="url(#p16d0361f2e)" style="fill: #ffffff; stroke: #8a9a93; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="fill: #1b2a24; font: 700 17px 'DejaVu Sans'; text-anchor: start" x="21.6" y="41.717344" transform="rotate(-0 21.6 41.717344)">2. Code architecture: layered, one handler for local and serverless</text>
+   </g>
+   <g id="text_2">
+    <text style="fill: #5b6b64; font: 10.5px 'DejaVu Sans'; text-anchor: start" x="21.6" y="69.898359" transform="rotate(-0 21.6 69.898359)">Routes stay thin, domain rules live in services, storage sits behind server/db so it can move to Postgres.</text>
+   </g>
+   <g id="text_3">
+    <text style="fill: #1b2a24; font: 700 10.5px 'DejaVu Sans'; text-anchor: middle" x="122.4" y="137.496328" transform="rotate(-0 122.4 137.496328)">Entry points</text>
+   </g>
+   <g id="text_4">
+    <text style="fill: #1b2a24; font: 9.5px 'DejaVu Sans'; text-anchor: middle" x="568.8" y="137.150078" transform="rotate(-0 568.8 137.150078)">server.js (local server)   |   api/index.js (Vercel function)</text>
+   </g>
+   <g id="text_5">
+    <text style="fill: #1b2a24; font: 700 10.5px 'DejaVu Sans'; text-anchor: middle" x="122.4" y="199.457344" transform="rotate(-0 122.4 199.457344)">HTTP application</text>
+   </g>
+   <g id="text_6">
+    <text style="fill: #1b2a24; font: 9.5px 'DejaVu Sans'; text-anchor: middle" x="568.8" y="199.181406" transform="rotate(-0 568.8 199.181406)">server/app.js: CORS, body parsing, session context, error handling</text>
+   </g>
+   <g id="text_7">
+    <text style="fill: #1b2a24; font: 700 10.5px 'DejaVu Sans'; text-anchor: middle" x="122.4" y="261.336328" transform="rotate(-0 122.4 261.336328)">Router + access guard</text>
+   </g>
+   <g id="text_8">
+    <text style="fill: #1b2a24; font: 9.5px 'DejaVu Sans'; text-anchor: middle" x="568.8" y="261.101406" transform="rotate(-0 568.8 261.101406)">server/router.js: /api/&lt;root&gt; dispatch table, providerOnly(), login throttle</text>
+   </g>
+   <g id="text_9">
+    <text style="fill: #1b2a24; font: 700 10.5px 'DejaVu Sans'; text-anchor: middle" x="122.4" y="323.297344" transform="rotate(-0 122.4 323.297344)">Routes (thin)</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #1b2a24; font: 9.5px 'DejaVu Sans'; text-anchor: middle" x="568.8" y="323.021406" transform="rotate(-0 568.8 323.021406)">server/routes/*.js: applications, cases, referrals, mediation, lawyer, sync, audit ...</text>
+   </g>
+   <g id="text_11">
+    <text style="fill: #1b2a24; font: 700 10.5px 'DejaVu Sans'; text-anchor: middle" x="122.4" y="385.217344" transform="rotate(-0 122.4 385.217344)">Domain services</text>
+   </g>
+   <g id="text_12">
+    <text style="fill: #1b2a24; font: 9.5px 'DejaVu Sans'; text-anchor: middle" x="568.8" y="384.941406" transform="rotate(-0 568.8 384.941406)">server/services/*.js: lifecycle, triage, audit chain, safe contact, duplicates, AI engines</text>
+   </g>
+   <g id="text_13">
+    <text style="fill: #1b2a24; font: 700 10.5px 'DejaVu Sans'; text-anchor: middle" x="122.4" y="447.137344" transform="rotate(-0 122.4 447.137344)">Data access</text>
+   </g>
+   <g id="text_14">
+    <text style="fill: #1b2a24; font: 9.5px 'DejaVu Sans'; text-anchor: middle" x="568.8" y="446.750078" transform="rotate(-0 568.8 446.750078)">server/db/sqlite.js (case spine)   |   server/db/json-store.js (portal store)</text>
+   </g>
+   <g id="text_15">
+    <text style="fill: #1b2a24; font: 700 10.5px 'DejaVu Sans'; text-anchor: middle" x="122.4" y="509.057344" transform="rotate(-0 122.4 509.057344)">Domain + content</text>
+   </g>
+   <g id="text_16">
+    <text style="fill: #1b2a24; font: 9.5px 'DejaVu Sans'; text-anchor: middle" x="568.8" y="508.670078" transform="rotate(-0 568.8 508.670078)">server/domain/constants.js   |   server/content/portal-content.js   |   server/config.js</text>
+   </g>
+   <g id="text_17">
+    <text style="fill: #5b6b64; font: 9px 'DejaVu Sans'; text-anchor: start" x="28.8" y="583.2" transform="rotate(-0 28.8 583.2)">Browser code: public/js/app.js (portal, login, outbox, read-aloud) | public/js/console.js (7 roles) | public/sw.js (offline shell)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p16d0361f2e">
+   <rect x="0" y="0" width="936" height="604.8"/>
+  </clipPath>
+ </defs>
+</svg>

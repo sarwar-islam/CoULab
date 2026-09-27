@@ -1,0 +1,3 @@
+# Not part of the deployed runtime — keep deployments lean.
+legacy/
+docs/

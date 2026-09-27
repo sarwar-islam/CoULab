@@ -1,0 +1,604 @@
+ACCELERATING DIGITAL LEGAL AID  SERVICES
+
+                    IN BANGLADESH (ADLASB) P ROJECT
+
+                    FINAL CASE
+
+                    FIVE DOORS, ONE RECORD
+
+                    Grand Finale Case | All-Mandatory Integrated Challenge
+
+                    Digital Legal Aid for the Future: Building Justice for Every Citizen
+
+                                                          THE FINAL QUESTION
+
+Can one digital legal-aid architecture serve five very different citizens, support seven different provider
+  roles, and integrate eleven advanced technical challenges - without fragmenting the case record or
+                                                      replacing human judgment?
+
+                    BUILD ONE SYSTEM - NOT TWENTY-THREE ISLANDS.
+
+THE ASSIGNMENT
+
+Build one integrated DLAS prototype that incorporates ALL five Part A citizen scenarios, ALL seven Part B provider
+scenarios, and ALL eleven targeted technical challenges. The prototype must use one shared record architecture,
+common services and a traceable workflow rather than separate mini-projects.
+
+At a glance
+
+Item                Requirement
+Solution paper
+Final submission    26 September 2026, 11:59 PM | PDF | maximum 2 pages / 1,000 words
+Grand Finale
+Prototype standard  27 September 2026, 8:00 AM | pitch deck + public prototype URL + 90-second fallback recording
+
+Mandatory scope     27 September 2026 | 10-minute pitch + 10-minute jury Q&A
+
+                    Working integrated prototype; labelled simulations are acceptable only for external integrations that
+                    cannot reasonably be connected live
+
+                    5 citizen scenarios + 7 provider scenarios + 11 targeted technical challenges = 23 mandatory
+                    requirements
+READ THIS FIRST - WHAT 'MANDATORY' MEANS
+
+MANDATORY COVERAGE WHAT THIS MEANS
+
+Part A - 5 citizen scenarios   Moyuri, Ripon, Nabila, Nuching and Malek must all be supported by the same solution
+                               architecture.
+
+Part B - 7 provider scenarios  DLAO officer; Legal Aid Officer/Mediator; 16699 helpline agent; UDC entrepreneur; panel lawyer;
+                               receiving DLAO; and DLAO administrative/case-support staff must all be supported.
+
+Part C - 11 targeted technical Every technical challenge must be implemented and connected to the DLAS workflow and shared
+
+challenges                     record.
+
+One integrated record          Reuse the same Application ID / Case ID, data model, permissions, task engine, document
+                               history, audit trail and workflow services.
+
+Live demonstrability           All 23 requirements must be reachable and testable. The 10-minute pitch should combine them
+                               into a small number of integrated flows; the jury may inspect any item during Q&A.
+
+CLARITY RULE: Everything is mandatory; duplication is not. Reuse common components wherever the
+                                            same capability solves several scenarios.
+
+Prototype standards
+
+Term                     Meaning for this challenge
+
+Working                  The core logic genuinely functions with sample data and changes system state.
+
+Simulated integration    An external service may be represented by a clearly labelled mock/simulator, but the team's own workflow,
+                         state transition and audit entry must work.
+
+Concept-only             A slide, wireframe or verbal explanation without working logic does not count as implementation.
+
+Testable                 A juror can open the scenario/module, trigger the relevant action and observe the expected result.
+
+How to think about the challenge
+
+Layer                    Mandatory content                         Question to answer
+1. Citizen access
+2. Service delivery      Five doors + all five Part A scenarios    Can every person reach or remain connected to legal aid
+                                                                   despite their specific constraint?
+3. Technical capability
+4. Governance & trust    All seven Part B provider scenarios       Can each provider see the right information, take the right
+                                                                   next action and hand work onward without creating parallel
+                                                                   records or extra administrative burden?
+
+                         All eleven targeted technical challenges  Can the architecture handle the advanced case-
+                                                                   management, AI and resilience problems the case
+                                                                   requires?
+
+                         Safety, privacy, accessibility, provenance, Can every consequential action be explained, corrected,
+
+                         human authority and audit                 controlled and traced?
+
+The common backbone
+
+ENTRY CHANNEL -> APPLICATION ID -> VERIFICATION / REVIEW -> CASE ID -> MEDIATION / LAWYER /
+                      REFERRAL / OTHER SERVICE -> FOLLOW-UP -> OUTCOME -> CLOSURE
+
+· An Application ID is created at submission.
+· A Case ID is created only after acceptance and remains with the case through referral, mediation, lawyer
+
+     assignment and closure.
+· Contact-safety rules, representation status, document history, permissions and audit history follow the record.
+· Every provider uses a role-appropriate view of the same authoritative record.
+· Every technical module must write back to the same record rather than create a disconnected side system.
+HOW TO BUILD THIS: SIX FLOWS, ONE SYSTEM
+
+All 23 requirements must exist in the prototype. You are not expected to narrate 23 separate demonstrations. The
+strongest solution will combine them into connected end-to-end flows and reuse common services.
+
+Integrated flow                          Mandatory content it can demonstrate
+
+1. Safe & accessible intake              Moyuri + Ripon + 16699 agent + T5 Conversational Intake + representation + safe
+                                         contact + screenless/accessibility route
+
+2. Assisted, low-bandwidth & offline     Nuching + UDC entrepreneur + case-support staff + T6 Document Agent + T9 Offline
+intake                                   Sync + T10 PWA
+
+3. DLAO daily operations                 DLAO officer + case-support staff + T3 Related Incident Cases + T4 Duplicate Detection
+                                         + T8 Multi-Agent Triage + daily action view
+
+4. Mediation & settlement                Legal Aid Officer/Mediator + scheduling/notices/documents + remote/hybrid participation
+                                         + T7 Settlement Drafting + T11 E-Signature
+
+5. Urgent referral & receiving office    Nabila + DLAO officer + receiving DLAO + tracked referral + T2 jurisdiction escalation +
+                                         sensitive access
+
+6. Long-running case & lawyer            Malek + panel lawyer + DLAO officer + T1 Lawyer Change/Pattern Alert +
+accountability                           hearing/update reminders + citizen status
+
+JURY RULE: Any Part A scenario, Part B provider role or Part C technical challenge may be selected for a
+live check. Every mandatory item should therefore be reachable, connected and testable even if it is not
+narrated in the 10-minute pitch.
+
+Five doors into the same record
+
+Door                       Who it must work for               System implication
+16699 / IVR / voice
+                           People who can speak/use a keypad but Voice-first intake/status; confirmation/read-back; safe
+USSD / SMS
+Web / mobile               may not read                       contact; human handoff
+Assisted access
+DLAO / referral route      Basic phones; weak/no data         Short flows; low data dependency; neutral/privacy-aware
+                                                              messages
+
+                           Independent digital users          Bangla-first; accessible; low-bandwidth; save/resume
+
+                           UDC / authorised helper / representative Consent; provenance; bounded permissions; audit trail
+
+                           Walk-ins and institutional routes  Same record; no re-entry; structured handover and
+                                                              acknowledgement
+
+CHANNEL RULE: A channel is an interface, not a separate case-management system.
+PART A - FIVE CITIZEN SCENARIOS
+
+The five personas are mandatory and are not alternatives. Your prototype must show how the same architecture resolves each
+person's specific barrier. Shared components may be reused, but each persona's problem must be visibly resolved.
+
+A1. Moyuri Akter - Joypurhat
+
+Situation                                               Must be solved                     Minimum evidence
+
+Her husband controls the smartphone; her button         Unsafe contact; incomplete         Her application progresses safely; Ripon's report is distinct
+phone is checked; her NID is inaccessible; her brother  identity; representation; second-  from Moyuri's confirmation; safe channel/number/time and
+Ripon called 16699; the office has not heard her own    hand information.                  neutral wording are enforced; Moyuri can later correct or
+account.                                                                                   withdraw information.
+                                                                                           Failure test: an unsafe person answers the phone.
+
+A2. Ripon - authorised representative
+
+Situation                                               Must be solved                     Minimum evidence
+
+Ripon is blind and can use calls/voice but cannot       Blind access; authentication;      Ripon completes one meaningful Bangla task independently;
+independently use visual forms, PDF, CAPTCHA or         representation authority; non-     scope/status of authority is visible; the record shows what
+visual OTP.                                             visual status.                     Moyuri has and has not confirmed.
+                                                                                           Accessibility test: complete without a sighted helper.
+
+A3. Nabila - Jhenaidah
+
+Situation                                               Must be solved                     Minimum evidence
+
+A former classmate is using fake/altered images and     Urgency; highly sensitive          Urgency is surfaced for human review; sensitive material is
+pressuring her. The harm is spreading and some          evidence; role-restricted access;  restricted; referral includes reason/history/documents,
+response may require another competent authority.       referral.                          acknowledgement, deadline and escalation.
+                                                                                           Failure test: receiving authority does not acknowledge.
+
+A4. Nuching Marma - Khagrachari
+
+Situation                                               Must be solved                     Minimum evidence
+
+Nuching cannot read; speaks Marma and limited           Assisted access;                   The record distinguishes what Nuching said from what was
+Bangla; a UDC entrepreneur types/photographs            translation/provenance; consent;   translated/typed; assistance and consent are recorded; UDC
+documents and uses his own number; connectivity is      document quality; offline          access is bounded; document problems are visible; work
+unreliable.                                             resilience.                        survives network loss.
+                                                                                           Failure test: network drops halfway through submission.
+
+A5. Abdul Malek - Barguna                               Must be solved                     Minimum evidence
+
+ Situation                                              Long-running case; unstable        Malek can obtain status/next step without smartphone or
+                                                        contact; low literacy; status      reading; failed contact attempts are logged; overdue lawyer
+ His case is seven months old; hearing dates were       access; lawyer accountability.     updates surface before he travels.
+ learned informally; the number on file belongs to a                                       Failure test: panel lawyer misses two updates.
+ shop; travel costs wages; panel-lawyer updates are
+ missing.
+PART B - SEVEN PROVIDER SCENARIOS
+
+Part B follows the people who turn applications into actual legal-aid service. The objective is not merely to digitise their existing
+work. Each provider should receive the right role-based view, know the next action, and hand work onward through the same
+authoritative case record.
+
+B1. DLAO officer
+
+Challenge today                                             Outcome the system must achieve                             Minimum evidence
+
+Starts the day with a growing caseload but no single view   A unified operational view showing new, pending,            Open a realistic queue; identify what
+of new, incomplete, urgent, pending or overdue matters.     overdue and priority matters, with reasons for every flag;  needs attention today and why; drill
+Files, registers, calls and messages must be checked        searchable history; reminders and ageing alerts; final      into history; override one system
+separately, while status enquiries interrupt casework.      prioritisation remains with the officer.                    recommendation and see the
+                                                                                                                        override recorded.
+
+B2. Legal Aid Officer / Mediator
+
+Challenge today                                             Outcome the system must achieve                             Minimum evidence
+
+Pre-case mediation requires registration, party contact,    An integrated mediation workflow with scheduling,           Move one matter from registration ->
+date fixing, document review, attendance, mediation and     notices, documents, reminders, attendance and outcome       scheduling/notices ->
+outcome preparation. Repeated travel can increase cost,     recording; remote/hybrid participation where legally and    attendance/documents -> mediation
+lost work time and non-attendance.                          practically appropriate; in-person fallback retained.       -> outcome. Demonstrate a
+                                                                                                                        remote/hybrid option and a clear in-
+                                                                                                                        person fallback.
+
+B3. 16699 helpline agent                                    Outcome the system must achieve                             Minimum evidence
+
+ Challenge today                                            Case/Application ID look-up and Bangla intake/status        Look up an existing case and show
+                                                            interface using the same record as the DLAO.                the permitted current status/next
+ Explains the same procedures repeatedly and may not                                                                    step; create a new assisted intake
+ know whether a caller already applied, has mediation                                                                   that writes to the same record rather
+ pending, was referred or is waiting for a lawyer. The                                                                  than a separate note.
+ caller may repeat the story several times.
+
+B4. UDC entrepreneur
+
+Challenge today                                             Outcome the system must achieve                             Minimum evidence
+
+Helps low-literacy or digitally excluded users complete     Assisted-intake mode with case-type checklist, free-        Submit an assisted application
+forms but may not know document requirements. The           service notice, provenance/consent, safe/applicant          showing who assisted, what was
+entrepreneur's phone may be used, creating later            contact where available, limited post-submission access     consented to, required-document
+authentication/contact problems. Applicants may not         and weak-network support.                                   checklist, safe contact, free-service
+know the service is free.                                                                                               notice, limited post-submission
+                                                                                                                        access and recovery from network
+                                                                                                                        loss.
+
+B5. Panel lawyer
+
+Challenge today                                             Outcome the system must achieve                             Minimum evidence
+
+Receives assignments through paper, phone or informal       One assignment/worklist view with case documents,           Lawyer accepts an assignment,
+communication and lacks a single view of assigned           hearings, deadlines and required updates; digital           sees a hearing date, submits an
+matters, deadlines or hearing dates. Updates rely on        accept/decline and progress reporting; overdue              update, then misses a later deadline;
+calls and manual follow-up.                                 reminders; safe client notifications linked to the case.    the DLAO receives an overdue alert
+                                                                                                                        without a chase call.
+
+B6. Referral Receiving DLAO
+
+Challenge today                                             Outcome the system must achieve                             Minimum evidence
+
+Receives an inter-district referral with limited history,   Complete digital referral package with reason, history,     Referral arrives with complete
+unclear reason or missing documents and must call the       documents, responsible actor and expected action;           package; receiving DLAO
+sending office to reconstruct the case. Neither office can  acknowledgement and status visible to both offices and,     acknowledges/accepts/returns; both
+reliably see whether it was received, accepted or acted     where appropriate, the seeker.                              offices see status; non-
+upon.                                                                                                                   acknowledgement triggers follow-up.
+B7. DLAO administrative / case-support staff
+
+Challenge today                                             Outcome the system must achieve                              Minimum evidence
+
+Spend significant time maintaining registers, locating      Structured digital case record from intake to closure, with  Search and reconstruct a case
+physical files, re-entering information, preparing reports  search, version history, task status and reportable fields   without physical-file hunting;
+and answering requests for statistics. Knowledge can be     captured once and reused.                                    generate one routine
+lost when staff or files move.                                                                                           status/reporting view from data
+                                                                                                                         already captured in the case record.
+
+PART B DESIGN RULE: A helpline note, UDC intake, mediator action, lawyer update, referral acknowledgement or
+administrative report should update or reference the SAME authoritative case record - not create a second version of
+the case.
+PART C - ELEVEN TARGETED TECHNICAL CHALLENGES
+
+All eleven technical challenges are mandatory. They are not eleven separate products; they are stress tests of the architecture. The
+strongest solution will make them reinforce one another.
+
+ Examples: the document agent should improve the officer's file; offline sync should preserve the UDC journey; triage
+ should improve the DLAO action queue; e-signature should complete the mediation journey.
+
+Mandatory integration map                 Natural anchor                                         Reusable service
+                                          Malek + DLAO officer + panel lawyer                    Panel-lawyer management; task/escalation; payment
+ Challenge                                Nuching + DLAO officer + referral receiving DLAO       status
+ T1 Lawyer change / inactivity            DLAO officer + case-support staff                      Referral/routing; acknowledgement; escalation
+ T2 Jurisdiction ping-pong                DLAO officer + case-support staff                      Case-linking; controlled shared evidence
+ T3 Multiple applicants / one incident    Moyuri/Ripon/Nuching + 16699 + UDC                     Search/matching; human review; audit
+ T4 Duplicate detection                   DLAO officer + UDC + case-support staff                Intake; accessibility; provenance; human handoff
+ T5 Conversational Bangla intake          Mediator workflow                                      Document service; source references; missing-item
+ T6 Document briefing/checklist           DLAO officer                                           checks
+ T7 Settlement drafting                   Nuching + UDC + case-support staff                     Template/drafting; human review; audit
+ T8 Multi-agent triage                    Citizen-facing web/mobile + UDC                        Categorisation; rules; priority/routing
+ T9 Offline-first sync                    Mediator + settlement parties                          recommendation
+ T10 Low-bandwidth PWA                                                                           Local queue; idempotent sync; conflict review; audit
+ T11 Asynchronous e-signature                                                                    Performance; light mode; safe caching
+                                                                                                 Signing; sync; integrity verification
+
+Case-management challenges
+
+T1. The Lawyer Who Doesn't Answer
+
+Problem                                   Mandatory build                                        Acceptance test                          Guardrail
+
+Marzina Begum's panel lawyer has          Citizen lawyer-change request -> DLAO queue ->         Show request, officer review,            Pattern detection may
+stopped updating her, missed two          human review/reassignment -> stage-based payment       reassignment, payment-status update      trigger review; it does
+hearings and shows similar inactivity on  reconciliation -> separate repeated-inactivity review  and a separate pattern alert based on    not itself establish
+two other cases.                          alert.                                                 the defined threshold.                   misconduct or a
+                                                                                                                                          recoverable amount.
+
+T2. Jurisdiction Tug-of-War
+
+Problem                                   Mandatory build                                        Acceptance test                          Guardrail
+
+Rahim Mia's compensation matter is        Detect repeated transfer/return ->                     After two rejected/returned transfers,   The system escalates; it
+
+repeatedly transferred between a DLAO acknowledgement/return reason -> escalation ->             show escalation and the human decision does not make the legal
+
+and Labour Legal Aid Cell.                authorised human makes final routing decision.         that determines the route.               jurisdiction decision.
+
+T3. Multiple Applicants, One Incident
+
+Problem                                   Mandatory build                                        Acceptance test                          Guardrail
+
+Salma Begum and co-workers file           Link separate cases into a related-incident group;     Create three linked cases; upload one    Link, do not merge.
+separate claims arising from the same     upload common evidence once; provide group-level       common document once; show it across     Confidentiality,
+factory fire and share some evidence.     view while preserving separate records.                the group without merging case-specific  instructions and
+                                                                                                 information.                             outcomes remain case-
+                                                                                                                                          specific.
+
+T4. Duplicate / Fraud-Risk Detection
+
+Problem                                   Mandatory build                                        Acceptance test                          Guardrail
+
+Similar names/details may indicate        Fuzzy matching using multiple attributes;              Run 10-15 demo records including         Never auto-reject, auto-
+repeated applications, while two real     confidence/evidence display; side-by-side human
+people may look similar.                  review.                                                genuine duplicate candidates and at      merge or label a person
+
+                                                                                                 least two similar-but-different trap cases. fraudulent.
+AI / agentic-AI challenges
+
+T5. Conversational Intake Agent
+
+Problem                                      Mandatory build                                         Acceptance test                             Guardrail
+
+A form wizard is difficult for low-literacy  Natural Bangla multi-turn intake; slot-fill approved    Demonstrate one straightforward intake      AI may explain/check
+or unfamiliar users.                         fields; ask clarifying questions; call approved         and one sensitive/ambiguous case that       published rules; it does
+                                             rule/tools; preserve provenance; hand                   is handed to a human with context.          not decide eligibility.
+                                             sensitive/ambiguous cases to a human with context.                                                  Extracted facts must
+                                                                                                                                                 remain traceable and
+                                                                                                                                                 confirmable.
+
+T6. Document Summarization & Checklist Agent
+
+Problem                                      Mandatory build                                         Acceptance test                             Guardrail
+
+Officers must read deeds, medical            Analyse 5-6 sample documents; produce a concise         Use 5-6 documents, including one            Unclear content must be
+reports, photos and court papers and         briefing; compare with a case-type checklist; flag      deliberately missing item and one           surfaced, not guessed.
+manually identify missing items.             missing/uncertain items; source every material          unclear/unreadable item.                    The officer verifies the
+                                             summary point.                                                                                      briefing.
+
+T7. Settlement Agreement Drafting Assistant
+
+Problem                                      Mandatory build                                         Acceptance test                             Guardrail
+
+Mediators need tailored drafting for         Turn mediator notes into a draft grounded in approved   Generate drafts for maintenance,            The output is a draft.
+maintenance, property or labour              templates/examples; mark AI-filled/inferred sections;   property and labour scenarios; visibly      Human legal review,
+settlements.                                 flag internal inconsistencies; require explicit human   mark AI-inferred text and at least one      party
+                                             review.                                                 inconsistency warning.                      understanding/consent
+                                                                                                                                                 and applicable
+                                                                                                                                                 formalities remain
+                                                                                                                                                 mandatory.
+
+T8. Multi-Agent Case-Triage Pipeline
+
+Problem                                      Mandatory build                                         Acceptance test                             Guardrail
+
+A single priority flag is not enough for     Use at least three specialised components/agents for    Run at least five sample cases; include     Explainability means
+category, urgency, jurisdiction and          categorisation, compliance/process checks and           one case where agents/components            concise
+process checks.                              orchestration; surface structured reasons/evidence      disagree and the conflict is surfaced for   reasons/evidence, not
+                                             and conflicts.                                          human review.                               hidden chain-of-thought.
+                                                                                                                                                 Final priority/routing
+                                                                                                                                                 remains human-
+                                                                                                                                                 reviewable.
+
+Advanced technology & resilience challenges
+
+T9. Offline-First, Integrity-Verifiable Sync
+
+Problem                                      Mandatory build                                         Acceptance test                             Guardrail
+
+UDCs and offices may lose connectivity       Create applications offline with temporary UUIDs; sync  Create three records offline ->             State the threat model
+for hours while handling sensitive           later without duplicates; route conflicting edits to    reconnect/sync -> show no duplicate ->      and assumptions. Do
+applications.                                human review; demonstrate integrity verification.       simulate one conflict -> run integrity      not claim absolute
+                                                                                                     verification.                               tamper-proofing.
+
+T10. Low-Bandwidth Progressive Web App
+
+Problem                                      Mandatory build                                         Acceptance test                             Guardrail
+
+Rural users may have older low-RAM Installable PWA; safe offline caching; adaptive/light             Demonstrate normal and light mode           Do not indiscriminately
+                                                                                                     under the same throttled profile and        cache sensitive data on
+Android devices and unstable/expensive mode; testing under throttled network and                     report simple load/interaction measures.    shared devices; explain
+                                                                                                                                                 cache/encryption/exclus
+data.                                        constrained-device assumptions.                                                                     ion/logout choices.
+
+T11. Offline-Capable Secure E-Signature
+
+Problem                                      Mandatory build                                         Acceptance test                             Guardrail
+
+Settlement parties may sign at different     Asynchronous signing linked to the mediation record;    Two parties sign at different times, one    Cryptographic validity
+times and one may be offline.                offline-then-sync; cryptographic verification of        offline; sync later; verify signatures and  does not by itself
+                                             signature and document integrity; independent           show that the signed document has not       establish legal validity,
+                                             verification method.                                    changed.                                    identity, capacity,
+                                                                                                                                                 informed consent or
+                                                                                                                                                 enforceability.
+RESPONSIBLE-DESIGN RULES
+
+Area                             Non-negotiable rule
+
+Human authority                  Eligibility, rejection, final priority, legal judgment, consequential referral, final lawyer assignment, mediation outcome
+                                 and closure remain with authorised humans.
+
+Provenance                       Applicant-confirmed, representative-reported, intermediary-translated, staff-entered and AI-inferred information must be
+                                 distinguishable.
+
+Privacy / safety                 Collect only what is needed; apply role-based access; enforce safe contact; keep material access/change history.
+
+Accessibility                    Bangla-first demonstrated interfaces; accessible labels, focus, errors and zoom; equivalent route where a visual-only
+                                 step would exclude.
+
+Failure handling                 Every module must fail visibly and safely through uncertainty, retry, handoff, escalation or human review rather than
+                                 silent error.
+
+Workflow fit                     Every module must connect to the same DLAS record, IDs, tasks and audit history.
+
+Sample data                      Use illustrative data only. Do not use real NID numbers, real cases, real beneficiary records, live payments or a live
+                                 16699 call.
+
+THE GOLDEN THREAD ­ Compatibility and Interoperability Checklist
+
+The 23 mandatory items tell you what the prototype must contain. The Golden Thread tells you how those items must behave. It
+does not add ten separate modules.
+
+#     Requirement                                        Pass condition
+                                                         Channels and provider roles touch the same record; history shows source, role and handover.
+G1    One record, many doors/providers                   Who spoke/typed/translated/inferred/confirmed is visible; authority status is visible.
+                                                         Unsafe contact can be blocked/delayed with a recorded reason.
+G2    Representation & provenance                        Relevant task is usable through the required accessible/non-screen/assisted route.
+                                                         Consequential recommendation can be reviewed/corrected/overridden; human authority is recorded.
+G3    Safe contact                                       Missing/uncertain/latest-version/duplicate issues are surfaced without silent merge or guessing.
+                                                         Mediation, referral, lawyer, task and deadline show owner, status and next action.
+G4    Accessibility & inclusion                          Weak network/offline/retry/conflict paths do not silently lose or duplicate records.
+                                                         Each role sees what it needs - no more - and access boundaries persist across handovers.
+G5    Human control                                      Jury can reconstruct who did what, when, through which channel/provider role and on whose
+                                                         authority.
+G6    Complete file & document control
+
+G7    Tracked responsibility
+
+G8    Resilience
+
+G9    Role-based privacy
+
+G10 End-to-end audit
+
+MANDATORY COVERAGE CHECKLIST - 23 ITEMS
+
+ID             Mandatory item                                                                         Team check
+                                                                                                      [ ] Implemented [ ] Integrated [ ] Testable
+A1             Moyuri - safe contact, identity gap, representation                                    [ ] Implemented [ ] Integrated [ ] Testable
+                                                                                                      [ ] Implemented [ ] Integrated [ ] Testable
+A2             Ripon - blind access and independent status/task                                       [ ] Implemented [ ] Integrated [ ] Testable
+                                                                                                      [ ] Implemented [ ] Integrated [ ] Testable
+A3             Nabila - urgency, sensitive access, tracked referral                                   [ ] Implemented [ ] Integrated [ ] Testable
+                                                                                                      [ ] Implemented [ ] Integrated [ ] Testable
+A4             Nuching - assisted access, language/provenance, offline                                [ ] Implemented [ ] Integrated [ ] Testable
+                                                                                                      [ ] Implemented [ ] Integrated [ ] Testable
+A5             Malek - long-running status, unstable contact, lawyer follow-up                        [ ] Implemented [ ] Integrated [ ] Testable
+                                                                                                      [ ] Implemented [ ] Integrated [ ] Testable
+B1             DLAO officer - operational view, backlog, priority, follow-up                          [ ] Implemented [ ] Integrated [ ] Testable
+                                                                                                      [ ] Implemented [ ] Integrated [ ] Testable
+B2             Legal Aid Officer/Mediator - end-to-end mediation + remote/hybrid option               [ ] Implemented [ ] Integrated [ ] Testable
+                                                                                                      [ ] Implemented [ ] Integrated [ ] Testable
+B3             16699 helpline agent - shared case look-up + Bangla intake/status                      [ ] Implemented [ ] Integrated [ ] Testable
+                                                                                                      [ ] Implemented [ ] Integrated [ ] Testable
+B4             UDC entrepreneur - assisted intake + checklist + safe contact + free-service notice
+
+B5             Panel lawyer - assignment/worklist + hearings/deadlines + updates
+
+B6             Receiving DLAO - complete referral + acknowledgement/status
+
+B7             Administrative/case-support staff - structured record + search + reporting continuity
+
+T1             Lawyer change + repeated inactivity + payment reconciliation
+
+T2             Jurisdiction ping-pong + escalation
+
+T3             Related incident cases + shared evidence
+
+T4             Duplicate detection + human review
+
+T5             Conversational Bangla intake agent
+ID     Mandatory item                                    Team check
+                                                         [ ] Implemented [ ] Integrated [ ] Testable
+T6     Document summary/checklist agent                  [ ] Implemented [ ] Integrated [ ] Testable
+                                                         [ ] Implemented [ ] Integrated [ ] Testable
+T7     Settlement drafting assistant                     [ ] Implemented [ ] Integrated [ ] Testable
+                                                         [ ] Implemented [ ] Integrated [ ] Testable
+T8     Multi-agent triage pipeline                       [ ] Implemented [ ] Integrated [ ] Testable
+
+T9     Offline-first sync + conflict/integrity handling
+
+T10    Low-bandwidth PWA
+
+T11    Asynchronous secure e-signature
+
+Deliverables and deadlines
+
+#      Deliverable                  Deadline             Required content
+                                    26 Sep, 11:59 PM     PDF | max. 2 pages / 1,000 words | architecture + integration map + coverage + what
+1      Solution paper               27 Sep, 8:00 AM      was built
+                                    27 Sep, 8:00 AM      PPTX/PDF | prototype URL + QR code on slide 1
+2      Pitch deck                   27 Sep, 8:00 AM      All 23 mandatory items reachable and testable
+                                                         MP4 | max. 90 seconds | core integrated flow
+3      Live prototype
+
+4      Fallback recording
+
+Solution paper - required structure
+
+· System architecture: how Part A, Part B and the eleven technical challenges share records/services.
+· Coverage map: where each of the 23 mandatory items is implemented.
+· Human-control and safeguarding model: what technology assists and what authorised people decide.
+· Failure/resilience model: how offline operation, uncertainty, conflict, unsafe contact and unsuccessful handovers are handled.
+· Five proposed success indicators.
+
+10-minute pitch - recommended structure
+
+Time                   Show
+1 min                  Architecture: one system, four layers, 23 mandatory items.
+6 min                  Integrated flows covering the five citizens, seven provider roles and eleven technical modules.
+1 min                  One planned Bad Day failure/recovery.
+1 min                  Provider workload reduction + citizen inclusion/safety payoff.
+1 min                  Feasibility, DLAS workflow fit, scaling and metrics.
+
+Judging
+
+Criterion                                     Weight     What the jury is looking for
+System integration & architecture             20%
+                                                         One coherent architecture; shared records/services; clear state transitions; no
+Technical quality & reliability               20%        disconnected feature islands.
+
+Practical service improvement / legal impact  15%        Working implementation, data/state coherence, failure handling, source traceability and
+Innovation                                    10%        sound engineering.
+Inclusion & accessibility                     10%
+Privacy, safety & responsible AI              10%        Meaningful improvement to access and provider work without bypassing legal
+Feasibility, interoperability & scalability   10%        requirements.
+Presentation & multidisciplinary teamwork     5%
+                                                         Creative solution design beyond simply reproducing existing forms or workflows.
+
+                                                         The system holds under disability, low literacy, assisted access, weak devices and
+                                                         language/connectivity constraints.
+
+                                                         Safe contact, bounded access, provenance, human authority, explainability and audit.
+
+                                                         Can fit DLAS workflow, provider operations and scale beyond pilots.
+
+                                                         Clear demonstration and coherent legal/technical/design/governance reasoning.
+ANNEX A - QUICK GLOSSARY
+
+Term            Meaning
+ADLASB          Accelerating Digital Legal Aid Services in Bangladesh project
+DBLA            Directorate of Bangladesh Legal Aid
+DLAS            Digital Legal Aid System
+DLAO            District Legal Aid Office / Officer, depending on context
+UDC             Union Digital Centre - assisted service point
+16699           Legal-aid helpline / IVR route used in the challenge
+Application ID  Identifier created when an application is submitted
+Case ID         Identifier created after acceptance into the legal-aid case workflow
+Provenance      Who supplied, typed, translated, inferred, confirmed or changed information
+Golden Thread   Cross-cutting behaviours that must remain consistent across all scenarios and modules
+
+ANNEX B - WORKFLOW MAPS
+
+Every mandatory scenario and technical challenge must map to one or more DLAS workflow blocks or cross-cutting services.
+Teams should identify these mappings in the solution paper and be ready to show them during Q&A.
+
+B1. Existing DBLA legal-aid workflow - current process
+B2. DLAS comprehensive end-to-end workflow (Indicative)
+

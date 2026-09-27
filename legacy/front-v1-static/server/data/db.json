@@ -1,0 +1,728 @@
+{
+ "users": [
+  {
+   "id": "u2",
+   "name": "রেহানা বেগম",
+   "phone": "01811112233",
+   "email": "",
+   "nid": "",
+   "password": "e788498c6ee7bbdd36d5aff0c1fe38fa95b5eff6e224114fb8a22c71ad4bd5b1",
+   "role": "dlao",
+   "createdAt": "2026-09-23T07:15:00.737Z"
+  },
+  {
+   "id": "u3",
+   "name": "Test DLAO",
+   "phone": "01600000001",
+   "email": "",
+   "nid": "",
+   "password": "f2e4b4e0abe5672e5e24b52c16aa86109c95461ccb75980289a4f4e0d74cdfb3",
+   "role": "dlao",
+   "createdAt": "2026-09-23T09:07:30.620Z"
+  },
+  {
+   "id": "u4",
+   "name": "sahen",
+   "phone": "01537223981",
+   "email": "",
+   "nid": "",
+   "password": "1b9ee8388a15004a5fc1770fbf24ab74e8d5689e2ce04c2cf2efff23b41a4e31",
+   "role": "dlao",
+   "createdAt": "2026-09-23T10:17:17.999Z"
+  }
+ ],
+ "sessions": {
+  "151c245574e3df3aacb63028ae4c0569ff546422f5efcf34": {
+   "userId": "u1",
+   "createdAt": 1790144281396,
+   "expiresAt": 1790749081396
+  },
+  "a2de4e0d77b408a8fd775da9d84f9a2ab3d1ed7b8d58803c": {
+   "userId": "u1",
+   "createdAt": 1790144394574,
+   "expiresAt": 1790749194574
+  },
+  "dd5b32dcef99897ec219d729c66b98f4753944011823ab69": {
+   "userId": "u1",
+   "createdAt": 1790144460693,
+   "expiresAt": 1790749260693
+  },
+  "8af9aa9ffc23bd1c7625bb717ee35ecabcbd9c4389d99c7c": {
+   "userId": "u1",
+   "createdAt": 1790144529015,
+   "expiresAt": 1790749329015
+  },
+  "b2576a4c27bd4471f5c8d386f0c1762faa1db834bbd9de1d": {
+   "userId": "u2",
+   "createdAt": 1790147700737,
+   "expiresAt": 1790752500737
+  },
+  "48aabd7d057e0587ea703e1f5eba147ee66918063e2294ba": {
+   "userId": "u2",
+   "createdAt": 1790147722272,
+   "expiresAt": 1790752522272
+  },
+  "34ebc9f8bb07827b53a2d78c22b9a94ce6f0dccc2f449fe0": {
+   "userId": "u2",
+   "createdAt": 1790147744670,
+   "expiresAt": 1790752544670,
+   "role": "dlao"
+  },
+  "9ebfc27c0023cb027c8e75bd35dc2a7909bf7df0819c417b": {
+   "userId": "u3",
+   "createdAt": 1790154450620,
+   "expiresAt": 1790759250620,
+   "role": "dlao"
+  },
+  "aae0bb70a75ebeed69bd3c1ddb8442d29d7529c5735d5fd7": {
+   "userId": "u4",
+   "createdAt": 1790158638000,
+   "expiresAt": 1790763438000,
+   "role": "dlao"
+  }
+ },
+ "applications": [
+  {
+   "appId": "DLAS-NET-2026-04419",
+   "userId": "u2",
+   "name": "রেহানা বেগম",
+   "phone": "01811112233",
+   "nid": "",
+   "district": "নেত্রকোনা",
+   "caseType": "ভূমি",
+   "purpose": "new",
+   "emergency": false,
+   "income": null,
+   "deps": null,
+   "problem": "জমির দখল নিয়ে বিরোধ",
+   "office": null,
+   "stage": 0,
+   "history": [
+    {
+     "at": "2026-09-23T07:15:58.923Z",
+     "label": "আবেদন জমা হয়েছে"
+    }
+   ],
+   "createdAt": "2026-09-23T07:15:58.923Z"
+  },
+  {
+   "appId": "DLAS-NET-2026-04420",
+   "demoPersona": "A1",
+   "userId": null,
+   "name": "ময়ূরী আক্তার",
+   "phone": "01700000001",
+   "nid": "",
+   "district": "জয়পুরহাট",
+   "caseType": "পারিবারিক — ভরণপোষণ",
+   "problem": "স্বামী ভরণপোষণ দেন না; আমার ফোন স্বামী নিয়ন্ত্রণ করে।",
+   "emergency": true,
+   "sensitive": true,
+   "stage": 2,
+   "history": [
+    {
+     "at": "2026-09-23T09:07:59.796Z",
+     "label": "আবেদন জমা হয়েছে"
+    }
+   ],
+   "tasks": [],
+   "documents": [],
+   "failedContacts": [],
+   "safeContact": {
+    "safeNumber": "01700-000000",
+    "unsafeNumbers": [
+     "01800-999999"
+    ],
+    "window": "সকাল ১১টা–দুপুর ১টা",
+    "neutralWording": true,
+    "setBy": "u4",
+    "at": "2026-09-23T10:23:18.547Z"
+   },
+   "representation": null,
+   "channel": "web",
+   "audit": [
+    {
+     "at": "2026-09-23T09:07:59.796Z",
+     "actor": {
+      "role": "applicant"
+     },
+     "role": "applicant",
+     "action": "application-created",
+     "detail": "ডেমো পার্সোনা A1",
+     "provenance": "applicant-confirmed"
+    },
+    {
+     "at": "2026-09-23T10:23:16.631Z",
+     "actor": {
+      "id": "u4",
+      "name": "sahen",
+      "role": "dlao"
+     },
+     "role": "dlao",
+     "action": "referral-sent",
+     "detail": "→ জয়পুরহাট: এখতিয়ারভিত্তিক হস্তান্তর",
+     "provenance": "staff-entered"
+    },
+    {
+     "at": "2026-09-23T10:23:18.547Z",
+     "actor": {
+      "id": "u4",
+      "name": "sahen",
+      "role": "dlao"
+     },
+     "role": "dlao",
+     "action": "safe-contact-set",
+     "detail": "নিরাপদ নম্বর সেট; নিষিদ্ধ: 1টি; সময়: সকাল ১১টা–দুপুর ১টা",
+     "provenance": "staff-entered"
+    },
+    {
+     "at": "2026-09-23T10:23:22.442Z",
+     "actor": {
+      "id": "u4",
+      "name": "sahen",
+      "role": "dlao"
+     },
+     "role": "dlao",
+     "action": "acceptance",
+     "detail": "যোগ্যতা যাচাইকৃত",
+     "provenance": "staff-entered",
+     "humanDecision": true
+    },
+    {
+     "at": "2026-09-23T10:23:22.443Z",
+     "actor": {
+      "role": "system"
+     },
+     "role": "system",
+     "action": "case-created",
+     "detail": "Case ID তৈরি হয়েছে",
+     "provenance": "staff-entered"
+    }
+   ],
+   "provenance": {
+    "name": "applicant-confirmed",
+    "phone": "applicant-confirmed",
+    "problem": "applicant-confirmed"
+   },
+   "createdAt": "2026-09-23T09:07:59.796Z",
+   "referral": {
+    "toDistrict": "জয়পুরহাট",
+    "toOffice": "জেলা লিগ্যাল এইড অফিস",
+    "reason": "এখতিয়ারভিত্তিক হস্তান্তর",
+    "documents": [],
+    "sentBy": "u4",
+    "sentAt": "2026-09-23T10:23:16.631Z",
+    "status": "sent",
+    "ackDeadline": "2026-09-26T10:23:16.631Z",
+    "history": [
+     {
+      "at": "2026-09-23T10:23:16.631Z",
+      "st": "sent"
+     }
+    ]
+   },
+   "caseId": "DLAS-CASE-2026-00902"
+  },
+  {
+   "appId": "DLAS-NET-2026-04421",
+   "demoPersona": "A2",
+   "userId": null,
+   "name": "রিপন মালাকার (প্রতিনিধি)",
+   "phone": "01700000002",
+   "nid": "",
+   "district": "জয়পুরহাট",
+   "caseType": "পারিবারিক — ভরণপোষণ",
+   "problem": "বোনের হয়ে প্রতিনিধি হিসেবে আবেদন (প্রতিবন্ধী — ভয়েস/কল রুট)।",
+   "emergency": false,
+   "sensitive": false,
+   "stage": 0,
+   "history": [
+    {
+     "at": "2026-09-23T09:07:59.796Z",
+     "label": "আবেদন জমা হয়েছে"
+    }
+   ],
+   "tasks": [],
+   "documents": [],
+   "failedContacts": [],
+   "safeContact": null,
+   "representation": {
+    "repName": "রিপন মালাকার",
+    "repPhone": "01700-333333",
+    "relation": "ভাই",
+    "scope": "intake-only"
+   },
+   "channel": "voice",
+   "audit": [
+    {
+     "at": "2026-09-23T09:07:59.796Z",
+     "actor": {
+      "role": "representative"
+     },
+     "role": "representative",
+     "action": "application-created",
+     "detail": "ডেমো পার্সোনা A2",
+     "provenance": "representative-reported"
+    }
+   ],
+   "provenance": {
+    "name": "representative-reported",
+    "phone": "representative-reported",
+    "problem": "representative-reported"
+   },
+   "createdAt": "2026-09-23T09:07:59.796Z"
+  },
+  {
+   "appId": "DLAS-NET-2026-04422",
+   "demoPersona": "A3",
+   "userId": null,
+   "name": "নাবিলা (নাম পরিবর্তিত)",
+   "phone": "01700000003",
+   "nid": "",
+   "district": "ঝিনাইদহ",
+   "caseType": "সাইবার — হয়রানি",
+   "problem": "ফেক/সম্পাদিত ছবি দিয়ে চাপ দেওয়া হচ্ছে — স্পর্শকাতর।",
+   "emergency": true,
+   "sensitive": true,
+   "stage": 1,
+   "history": [
+    {
+     "at": "2026-09-23T09:07:59.796Z",
+     "label": "যোগ্যতা যাচাই চলছে"
+    }
+   ],
+   "tasks": [],
+   "documents": [],
+   "failedContacts": [],
+   "safeContact": null,
+   "representation": null,
+   "channel": "web",
+   "audit": [
+    {
+     "at": "2026-09-23T09:07:59.796Z",
+     "actor": {
+      "role": "applicant"
+     },
+     "role": "applicant",
+     "action": "application-created",
+     "detail": "ডেমো পার্সোনা A3",
+     "provenance": "applicant-confirmed"
+    },
+    {
+     "at": "2026-09-23T09:22:30.538Z",
+     "actor": {
+      "id": "u2",
+      "role": "udc"
+     },
+     "role": "udc",
+     "action": "access-denied",
+     "detail": "স্পর্শকাতর রেকর্ড — অনুমতি নেই",
+     "provenance": "staff-entered"
+    },
+    {
+     "at": "2026-09-23T10:23:00.519Z",
+     "actor": {
+      "id": "u4",
+      "name": "sahen",
+      "role": "dlao"
+     },
+     "role": "dlao",
+     "action": "lawyer-miss",
+     "detail": "",
+     "provenance": "staff-entered"
+    }
+   ],
+   "provenance": {
+    "name": "applicant-confirmed",
+    "phone": "applicant-confirmed",
+    "problem": "applicant-confirmed"
+   },
+   "createdAt": "2026-09-23T09:07:59.796Z",
+   "lawyer": {
+    "updates": [],
+    "missed": 1
+   }
+  },
+  {
+   "appId": "DLAS-NET-2026-04423",
+   "demoPersona": "A4",
+   "userId": null,
+   "name": "নুচিং মারমা",
+   "phone": "01700000004",
+   "nid": "",
+   "district": "খাগড়াছড়ি",
+   "caseType": "ভূমি — দখল",
+   "problem": "UDC উদ্যোক্তার সহায়তায় আবেদন (সীমিত বাংলা; অফলাইনে তৈরি হতে পারে)।",
+   "emergency": false,
+   "sensitive": false,
+   "stage": 0,
+   "history": [
+    {
+     "at": "2026-09-23T09:07:59.796Z",
+     "label": "আবেদন জমা হয়েছে"
+    }
+   ],
+   "tasks": [],
+   "documents": [],
+   "failedContacts": [],
+   "safeContact": null,
+   "representation": null,
+   "channel": "assisted",
+   "audit": [
+    {
+     "at": "2026-09-23T09:07:59.796Z",
+     "actor": {
+      "role": "udc"
+     },
+     "role": "udc",
+     "action": "application-created",
+     "detail": "ডেমো পার্সোনা A4",
+     "provenance": "intermediary-translated"
+    }
+   ],
+   "provenance": {
+    "name": "intermediary-translated",
+    "phone": "intermediary-translated",
+    "problem": "intermediary-translated"
+   },
+   "createdAt": "2026-09-23T09:07:59.796Z"
+  },
+  {
+   "appId": "DLAS-NET-2026-04424",
+   "demoPersona": "A5",
+   "userId": null,
+   "name": "আবদুল মালেক",
+   "phone": "01700000005",
+   "nid": "",
+   "district": "বরগুনা",
+   "caseType": "ভূমি — দীর্ঘস্থায়ী মামলা",
+   "problem": "৭ মাসের পুরোনো মামলা; ফাইলের নম্বরে দোকানের ফোন; আইনজীবীর আপডেট বাকি।",
+   "emergency": false,
+   "sensitive": false,
+   "stage": 3,
+   "history": [
+    {
+     "at": "2026-09-23T09:07:59.796Z",
+     "label": "আইনজীবী নিয়োগ"
+    }
+   ],
+   "tasks": [],
+   "documents": [],
+   "failedContacts": [
+    {
+     "at": "2026-09-22T09:07:59.796Z",
+     "note": "ফাইলের নম্বর বন্ধ"
+    },
+    {
+     "at": "2026-09-21T09:07:59.796Z",
+     "note": "কেউ ধরেননি"
+    }
+   ],
+   "safeContact": null,
+   "representation": null,
+   "channel": "web",
+   "audit": [
+    {
+     "at": "2026-09-23T09:07:59.796Z",
+     "actor": {
+      "role": "applicant"
+     },
+     "role": "applicant",
+     "action": "application-created",
+     "detail": "ডেমো পার্সোনা A5",
+     "provenance": "staff-entered"
+    },
+    {
+     "at": "2026-09-23T09:07:59.796Z",
+     "actor": {
+      "role": "system"
+     },
+     "role": "system",
+     "action": "lawyer-missed",
+     "detail": "২টি আপডেট মিস (T1)",
+     "provenance": "staff-entered"
+    }
+   ],
+   "provenance": {
+    "name": "staff-entered",
+    "phone": "staff-entered",
+    "problem": "staff-entered"
+   },
+   "createdAt": "2026-09-23T09:07:59.796Z",
+   "lawyer": {
+    "name": "অ্যাডভোকেট রহমান",
+    "missed": 2,
+    "updates": []
+   },
+   "hearings": [
+    {
+     "date": "১৫/১০/২০২৬",
+     "note": "সাক্ষীর সাক্ষ্য"
+    }
+   ]
+  },
+  {
+   "appId": "DLAS-NET-2026-04426",
+   "userId": "u2",
+   "name": "ইডেম টেস্ট",
+   "phone": "01911112222",
+   "nid": "",
+   "district": "খাগড়াছড়ি",
+   "caseType": "ভূমি",
+   "problem": "x",
+   "emergency": false,
+   "stage": 0,
+   "offlineCreated": true,
+   "tempUuid": "idem-test-1",
+   "provenanceTags": {
+    "source": "udc-assisted",
+    "connectivity": "offline-created"
+   },
+   "history": [
+    {
+     "at": "2026-09-23T09:21:40.213Z",
+     "label": "আবেদন জমা হয়েছে (অফলাইনে তৈরি)"
+    }
+   ],
+   "audit": [
+    {
+     "at": "2026-09-23T09:21:40.213Z",
+     "actor": {
+      "role": "udc"
+     },
+     "role": "udc",
+     "action": "offline-sync",
+     "detail": "অফলাইনে তৈরি রেকর্ড সিঙ্ক হয়েছে",
+     "provenance": "intermediary-translated"
+    }
+   ],
+   "createdAt": "2026-09-23T09:21:40.213Z"
+  },
+  {
+   "appId": "DLAS-NET-2026-04427",
+   "userId": "u2",
+   "name": "ক্রসচেক দেবী",
+   "phone": "01712345678",
+   "nid": "",
+   "district": "জয়পুরহাট",
+   "caseType": "family",
+   "purpose": "new",
+   "emergency": false,
+   "income": "8000",
+   "deps": "2",
+   "problem": "ক্রসচেক: স্বামী ভরণপোষণ দেন না",
+   "office": null,
+   "sensitive": true,
+   "stage": 0,
+   "history": [
+    {
+     "at": "2026-09-23T09:43:44.954Z",
+     "label": "আবেদন জমা হয়েছে"
+    }
+   ],
+   "tasks": [],
+   "documents": [],
+   "representation": null,
+   "safeContact": {
+    "safeNumber": "01798765432",
+    "unsafeNumbers": [
+     "01700000001",
+     "01700000002"
+    ],
+    "window": "সকাল ১১টা–দুপুর ১টা",
+    "neutralWording": true,
+    "at": "2026-09-23T09:43:44.954Z"
+   },
+   "failedContacts": [],
+   "audit": [
+    {
+     "at": "2026-09-23T09:43:44.954Z",
+     "actor": {
+      "id": "u2",
+      "name": "রেহানা বেগম",
+      "role": "staff"
+     },
+     "role": "staff",
+     "action": "application-created",
+     "detail": "সরাসরি জমা",
+     "provenance": "applicant-confirmed"
+    }
+   ],
+   "provenance": {
+    "name": "applicant-confirmed",
+    "phone": "applicant-confirmed",
+    "nid": "applicant-confirmed",
+    "problem": "applicant-confirmed",
+    "income": "applicant-confirmed"
+   },
+   "channel": "web",
+   "createdAt": "2026-09-23T09:43:44.954Z"
+  }
+ ],
+ "complaints": [],
+ "chatlogs": [
+  {
+   "q": "ho",
+   "at": "2026-09-23T07:22:13.525Z",
+   "matched": false
+  },
+  {
+   "q": "hi",
+   "at": "2026-09-23T07:22:15.393Z",
+   "matched": false
+  },
+  {
+   "q": "hi",
+   "at": "2026-09-23T07:28:02.724Z",
+   "matched": "greeting"
+  },
+  {
+   "q": "hello",
+   "at": "2026-09-23T07:28:02.790Z",
+   "matched": "greeting"
+  },
+  {
+   "q": "???????? ???????",
+   "at": "2026-09-23T07:28:02.865Z",
+   "matched": false
+  },
+  {
+   "q": "???????? ???????",
+   "at": "2026-09-23T07:28:59.523Z",
+   "matched": false
+  },
+  {
+   "q": "amar jomi dokhol koreche, kivabe abedon korbo",
+   "at": "2026-09-23T07:28:59.641Z",
+   "matched": "intent:form"
+  },
+  {
+   "q": "???????? ???????",
+   "at": "2026-09-23T07:30:25.970Z",
+   "matched": false
+  },
+  {
+   "q": "???????? ???????",
+   "at": "2026-09-23T07:33:08.077Z",
+   "matched": false
+  },
+  {
+   "q": "???????? ???????",
+   "at": "2026-09-23T07:34:15.797Z",
+   "matched": false
+  },
+  {
+   "q": "আসসালামু আলাইকুম",
+   "at": "2026-09-23T07:37:54.910Z",
+   "matched": "greeting"
+  },
+  {
+   "q": "hi",
+   "at": "2026-09-23T07:38:14.127Z",
+   "matched": "greeting"
+  },
+  {
+   "q": "hello bot",
+   "at": "2026-09-23T07:38:14.134Z",
+   "matched": "greeting"
+  },
+  {
+   "q": "amar jomi dokhol koreche kivabe abedon korbo",
+   "at": "2026-09-23T07:38:14.141Z",
+   "matched": "intent:form"
+  },
+  {
+   "q": "is this free?",
+   "at": "2026-09-23T07:38:14.147Z",
+   "matched": "greeting"
+  },
+  {
+   "q": "আবেদন ফরম খোলো",
+   "at": "2026-09-23T07:38:14.153Z",
+   "matched": "intent:form"
+  },
+  {
+   "q": "amar abedon kothay?",
+   "at": "2026-09-23T07:38:14.158Z",
+   "matched": "cmd:track"
+  },
+  {
+   "q": "zzz xxx",
+   "at": "2026-09-23T07:38:14.167Z",
+   "matched": false
+  },
+  {
+   "q": "hi",
+   "at": "2026-09-23T07:38:44.538Z",
+   "matched": "greeting"
+  },
+  {
+   "q": "How to apply?",
+   "at": "2026-09-23T07:39:05.409Z",
+   "matched": "intent:form"
+  },
+  {
+   "q": "library te ki ase?",
+   "at": "2026-09-23T07:39:20.320Z",
+   "matched": "cmd:library"
+  },
+  {
+   "q": "অফিস খোলো",
+   "at": "2026-09-23T07:39:28.023Z",
+   "matched": "cmd:offices"
+  },
+  {
+   "q": "hi",
+   "at": "2026-09-23T07:49:02.854Z",
+   "matched": "greeting"
+  },
+  {
+   "q": "আসসালামু আলাইকুম",
+   "at": "2026-09-23T07:49:03.856Z",
+   "matched": "greeting"
+  },
+  {
+   "q": "আবেদন ফরম খোলো",
+   "at": "2026-09-23T07:49:04.860Z",
+   "matched": "cmd:apply"
+  },
+  {
+   "q": "amar biye bhangte chai talak dao",
+   "at": "2026-09-23T07:50:36.070Z",
+   "matched": true
+  },
+  {
+   "q": "how can I track my application",
+   "at": "2026-09-23T07:50:36.076Z",
+   "matched": true
+  },
+  {
+   "q": "is it free?",
+   "at": "2026-09-23T07:50:36.081Z",
+   "matched": true
+  },
+  {
+   "q": "জমির দখল",
+   "at": "2026-09-23T09:35:56.756Z",
+   "matched": true
+  },
+  {
+   "q": "আরও জানতে চাই",
+   "at": "2026-09-23T09:36:01.108Z",
+   "matched": false
+  }
+ ],
+ "otps": {},
+ "counters": {
+  "application": 4427,
+  "complaint": 100,
+  "user": 5,
+  "case": 902
+ },
+ "syncLog": [
+  {
+   "clientId": "idem-test-1",
+   "appId": "DLAS-NET-2026-04426",
+   "at": "2026-09-23T09:21:40.213Z"
+  }
+ ]
+}

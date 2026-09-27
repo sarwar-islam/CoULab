@@ -1,0 +1,13 @@
+{
+  "name": "bangladesh-legal-aid-portal",
+  "version": "1.0.0",
+  "description": "ডিজিটাল আইনগত সহায়তা পোর্টাল (DLAS) — Bangladesh Legal Aid & Justice Help Portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

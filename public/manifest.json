@@ -1,0 +1,15 @@
+{
+  "name": "আইনসহায় — বাংলাদেশ ডিজিটাল লিগ্যাল এইড",
+  "short_name": "আইনসহায়",
+  "description": "বাংলাদেশের ডিজিটাল লিগ্যাল এইড পোর্টাল — আবেদন, ট্র্যাকিং, মধ্যস্থতা ও ১৬৬৯৯ সহায়তা",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBFAF6",
+  "theme_color": "#3D9970",
+  "lang": "bn",
+  "dir": "ltr",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "note": "T10 — ইনস্টলেবল PWA; লো-ব্যান্ডউইথ ফ্রেন্ডলি, সংবেদনশীল ডেটা ক্যাশ করা হয় না"
+}

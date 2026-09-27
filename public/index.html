@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CoU JusticeLab — ডিজিটাল আইনি সেবা ও সহায়তা প্ল্যাটফর্ম</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#00543E">
+  <meta name="description" content="CoU JusticeLab — সমন্বিত ডিজিটাল আইনগত সহায়তা পোর্টাল। সম্পূর্ণ সরকারি খরচে বিনামূল্যে আইনি পরামর্শ, মধ্যস্থতা ও আইনজীবী নিয়োগ।">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <link rel="stylesheet" href="/css/styles.css?v=20">
+  <style>
+    /* Critical Mobile & Viewport Protection */
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+      width: 100% !important;
+      position: relative !important;
+    }
+    .site-header {
+      width: 100% !important;
+      max-width: 100vw !important;
+      overflow-x: clip !important;
+    }
+    .header-inner {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .btn-ref-tel, #callBtn {
+      display: inline-flex !important;
+      align-items: center !important;
+      white-space: nowrap !important;
+      gap: 5px !important;
+      flex-direction: row !important;
+    }
+    @media (max-width: 992px) {
+      .desk-only,
+      .header-actions .desk-only,
+      .header-actions .header-login-btn,
+      .header-actions .header-cta-btn,
+      .header-actions .header-a11y-btn,
+      .header-actions #loginLink,
+      .header-actions #a11yToggle {
+        display: none !important;
+      }
+      .brand-text small {
+        display: none !important;
+      }
+      .nav-burger {
+        display: inline-flex !important;
+      }
+      .main-nav {
+        display: none !important;
+      }
+      .main-nav.open {
+        display: flex !important;
+      }
+      .mobile-nav-actions {
+        display: flex !important;
+      }
+      .gov-topbar-inner {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+      }
+      .gov-helpline {
+        justify-content: center !important;
+      }
+      .gov-date {
+        display: none !important;
+      }
+    }
+    @media (max-width: 420px) {
+      .btn-ref-tel .tel-text {
+        display: none !important;
+      }
+      .btn-ref-tel {
+        padding: 5px 8px !important;
+        border-radius: 50% !important;
+        width: 34px !important;
+        height: 34px !important;
+        justify-content: center !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ সরকারি অফিশিয়াল টপ বার ============ -->
+  <div class="gov-topbar">
+    <div class="container gov-topbar-inner">
+      <div class="gov-brand">
+        <svg class="bd-seal" viewBox="0 0 100 100" width="18" height="18" aria-hidden="true">
+          <circle cx="50" cy="50" r="48" fill="#D32F2F" stroke="#E5A93B" stroke-width="3"/>
+          <circle cx="50" cy="28" r="28" fill="#00543E"/>
+          <path d="M50 26 L52 38 L64 38 L54 45 L58 57 L50 50 L42 57 L46 45 L36 38 L48 38 Z" fill="#E5A93B"/>
+        </svg>
+        <span class="gov-text">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার / Government of the People's Republic of Bangladesh.</span>
+      </div>
+      <div class="gov-helpline">
+        <span id="govLiveDate" class="gov-date">বৃহস্পতিবার, ২৪ সেপ্টেম্বর, ২০২৬</span>
+        <span class="sep">|</span>
+        <a href="tel:16699" class="gov-phone" title="টোল-ফ্রি জাতীয় আইনি সহায়তা হেল্পলাইন"> ১৬৬৯৯</a>
+        <span class="sep">|</span>
+        <a href="tel:999" class="gov-phone" title="জাতীয় জরুরি সেবা">জরুরি: ৯৯৯</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ প্রধান সাইট হেডার ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#/">
+        <span class="brand-icon" aria-hidden="true">
+          <!-- Scales of Justice SVG -->
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v18M7 21h10M12 6l7 2M12 6L5 8M19 8l-2.5 6a3.5 3.5 0 0 1-5 0L19 8zM5 8l2.5 6a3.5 3.5 0 0 0 5 0L5 8z"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong data-i18n="brand">CoU JusticeLab</strong>
+          <small data-i18n="brandSub">Digital Legal Aid Platform · CoU JusticeLab</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="প্রধান মেনু">
+        <a href="#/" data-i18n="navHome">হোম</a>
+        <a href="#/apply" data-i18n="navApply">আবেদন করুন</a>
+        <a href="#/track" data-i18n="navTrack">আবেদন ট্র্যাক করুন</a>
+        <a href="#/topics" data-i18n="navLibrary">আইনি তথ্য</a>
+        <a href="#/services" data-i18n="navServices">সেবাসমূহ</a>
+        <a href="#/offices" data-i18n="navOffices">অফিস খুঁজুন</a>
+
+        <div class="mobile-nav-actions">
+          <a class="btn-ref-login mobile-login-btn" href="#/login" id="mobileLoginLink"> লগইন করুন</a>
+          <a class="header-dash-btn" href="#/dashboard" id="mobileDashLink"> আমার ড্যাশবোর্ড</a>
+          <a class="btn-ref-cta mobile-cta-btn" href="#/apply">আইনি সহায়তা পান →</a>
+          <a class="btn-ref-tel mobile-tel-btn" href="tel:16699"> হেল্পলাইন ১৬৬৯৯ (টোল-ফ্রি)</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-switch-btn" id="langToggle" title="English" aria-label="ভাষা পরিবর্তন">文A English</button>
+        <a class="btn-ref-tel" href="tel:16699" id="callBtn" title="১৬৬৯৯ কল করুন" style="display:inline-flex;align-items:center;white-space:nowrap;gap:4px;"> <span class="tel-text">১৬৬৯৯</span></a>
+
+        <button class="icon-btn header-a11y-btn desk-only" id="a11yToggle" title="প্রবেশগম্যতা বিকল্প" aria-label="প্রবেশগম্যতা"></button>
+        <a class="btn-ref-login header-login-btn desk-only" href="#/login" id="loginLink">লগইন <span style="font-size:14px"></span></a>
+        <a class="btn-ref-cta header-cta-btn desk-only" href="#/apply">আইনি সহায়তা পান →</a>
+        <a class="header-dash-btn" href="#/dashboard" id="headerDashBtn" title="আমার ড্যাশবোর্ড — সব আবেদন এক জায়গায়" aria-label="ড্যাশবোর্ড"> <span>ড্যাশবোর্ড</span></a>
+      </div>
+
+      <button class="icon-btn nav-burger" id="navBurger" aria-label="মোবাইল মেনু">☰</button>
+    </div>
+
+    <!-- প্রবেশগম্যতা (A11y) প্যানেল -->
+    <div class="a11y-panel hidden" id="a11yPanel">
+      <div class="container a11y-inner">
+        <span data-i18n="a11yTitle"><strong> প্রবেশগম্যতা বিকল্প:</strong></span>
+        <button id="fsDec" class="btn btn-outline btn-sm">ফন্ট ছোট (A−)</button>
+        <button id="fsInc" class="btn btn-outline btn-sm">ফন্ট বড় (A+)</button>
+        <button id="contrastToggle" class="btn btn-outline btn-sm" data-i18n="contrast">হাই কনট্রাস্ট</button>
+        <button id="a11yReset" class="btn btn-ghost btn-sm" data-i18n="reset">রিসেট</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ মূল কনটেন্ট (SPA Outlet) ============ -->
+  <main id="app" class="app-main"></main>
+
+  <!-- ============ ফুটার ============ -->
+  <footer class="site-footer">
+    <!-- পার্টনার লোগো স্ট্রিপ (User Specified Clean Light Grey Bar) -->
+    <div class="footer-partners-bar-light">
+      <div class="container partners-inner-light">
+        <!-- 1. European Union -->
+        <div class="partner-logo-item">
+          <svg viewBox="0 0 810 540" width="76" height="51" style="border-radius:2px;box-shadow:0 1px 4px rgba(0,0,0,0.18)" aria-label="European Union Flag">
+            <rect width="810" height="540" fill="#003399"/>
+            <g fill="#FFCC00" transform="translate(405, 270)">
+              <g id="euStar"><polygon points="0,-18 5.56,-5.56 18,-5.56 8.9,3.34 12.35,16.2 0,9 -12.35,16.2 -8.9,3.34 -18,-5.56 -5.56,-5.56"/></g>
+              <use href="#euStar" transform="rotate(0) translate(0,-120)"/>
+              <use href="#euStar" transform="rotate(30) translate(0,-120)"/>
+              <use href="#euStar" transform="rotate(60) translate(0,-120)"/>
+              <use href="#euStar" transform="rotate(90) translate(0,-120)"/>
+              <use href="#euStar" transform="rotate(120) translate(0,-120)"/>
+              <use href="#euStar" transform="rotate(150) translate(0,-120)"/>
+              <use href="#euStar" transform="rotate(180) translate(0,-120)"/>
+              <use href="#euStar" transform="rotate(210) translate(0,-120)"/>
+              <use href="#euStar" transform="rotate(240) translate(0,-120)"/>
+              <use href="#euStar" transform="rotate(270) translate(0,-120)"/>
+              <use href="#euStar" transform="rotate(300) translate(0,-120)"/>
+              <use href="#euStar" transform="rotate(330) translate(0,-120)"/>
+            </g>
+          </svg>
+          <div style="font-size:0.75rem;font-weight:700;color:#0F172A;margin-top:5px;text-align:center;line-height:1.25">
+            Funded by<br>the European Union
+          </div>
+        </div>
+
+        <!-- 2. বাংলাদেশ আইনগত সহায়তা অধিদপ্তর (Official Orange Logo) -->
+        <div class="partner-logo-item">
+          <svg viewBox="0 0 280 140" width="180" height="90" aria-label="বাংলাদেশ আইনগত সহায়তা অধিদপ্তর">
+            <defs>
+              <path id="archTextPath" d="M 25,120 A 115,115 0 0,1 255,120" fill="none"/>
+            </defs>
+            <text font-family="'Hind Siliguri', 'Noto Serif Bengali', sans-serif" font-size="14" font-weight="700" fill="#1E293B" letter-spacing="0.5">
+              <textPath href="#archTextPath" startOffset="50%" text-anchor="middle">
+                বাংলাদেশ আইনগত সহায়তা অধিদপ্তর
+              </textPath>
+            </text>
+            <!-- Orange Arch -->
+            <path d="M 45,125 A 95,95 0 0,1 235,125" fill="none" stroke="#F97316" stroke-width="8" stroke-linecap="round"/>
+            <!-- Left Figure in Orange -->
+            <path d="M 54,125 C 52,98 70,86 82,80 C 88,86 88,110 88,125 Z" fill="#F97316"/>
+            <circle cx="74" cy="70" r="10" fill="#F97316"/>
+            <!-- Right Figure in Orange -->
+            <path d="M 226,125 C 228,98 210,86 198,80 C 192,86 192,110 192,125 Z" fill="#F97316"/>
+            <circle cx="206" cy="70" r="10" fill="#F97316"/>
+            <!-- Scales of Justice in Orange -->
+            <g transform="translate(140, 92)" fill="#F97316" stroke="#F97316">
+              <rect x="-2.5" y="-16" width="5" height="38" rx="1.5"/>
+              <rect x="-10" y="20" width="20" height="5" rx="1.5"/>
+              <rect x="-26" y="-16" width="52" height="4" rx="2"/>
+              <!-- Left Pan -->
+              <line x1="-22" y1="-13" x2="-28" y2="4" stroke-width="2"/>
+              <line x1="-22" y1="-13" x2="-16" y2="4" stroke-width="2"/>
+              <path d="M -32,4 Q -22,14 -12,4 Z" fill="#F97316"/>
+              <!-- Right Pan -->
+              <line x1="22" y1="-13" x2="16" y2="4" stroke-width="2"/>
+              <line x1="22" y1="-13" x2="28" y2="4" stroke-width="2"/>
+              <path d="M 12,4 Q 22,14 32,4 Z" fill="#F97316"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- 3. UNDP Official Logo -->
+        <div class="partner-logo-item">
+          <div style="background:#006EB5;padding:8px 14px;border-radius:2px;display:flex;flex-direction:column;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,0.18)">
+            <!-- UN globe and wreath -->
+            <svg viewBox="0 0 100 80" width="50" height="40" fill="none" stroke="#FFFFFF" stroke-width="2.5">
+              <circle cx="50" cy="40" r="22" stroke-width="2"/>
+              <ellipse cx="50" cy="40" rx="14" ry="22" stroke-width="1.5"/>
+              <line x1="28" y1="40" x2="72" y2="40" stroke-width="1.5"/>
+              <line x1="33" y1="28" x2="67" y2="28" stroke-width="1.5"/>
+              <line x1="33" y1="52" x2="67" y2="52" stroke-width="1.5"/>
+              <!-- Olive wreath left -->
+              <path d="M 22,55 C 16,40 22,25 32,15" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M 22,55 C 20,48 24,40 30,35" stroke-width="1.5"/>
+              <!-- Olive wreath right -->
+              <path d="M 78,55 C 84,40 78,25 68,15" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M 78,55 C 80,48 76,40 70,35" stroke-width="1.5"/>
+            </svg>
+            <div style="color:#FFFFFF;font-family:'Inter',sans-serif;font-weight:900;font-size:16px;letter-spacing:5px;margin-top:3px;text-align:center">
+              UNDP
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-grid" style="padding-top:2.5rem">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#FDE68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v18M7 21h10M12 6l7 2M12 6L5 8M19 8l-2.5 6a3.5 3.5 0 0 1-5 0L19 8zM5 8l2.5 6a3.5 3.5 0 0 0 5 0L5 8z"/>
+          </svg>
+          <strong style="font-size:1.35rem;color:#FFF;letter-spacing:0.5px">CoU JusticeLab</strong>
+        </div>
+        <p data-i18n="footerAbout" style="font-size:0.88rem;line-height:1.6">
+          CoU JusticeLab — জাতীয় আইনগত সহায়তা প্রদান সংস্থা (NLASO)-র তত্ত্বাবধানে পরিচালিত সমন্বিত ডিজিটাল আইনি সহায়তা ব্যবস্থা। দরিদ্র, অসহায় ও সুবিধা-বঞ্চিত নাগরিকদের জন্য সরকারি খরচে সম্পূর্ণ বিনামূল্যে আইনি সেবা ও ন্যায়বিচার নিশ্চিতকরণে প্রতিশ্রুত।
+        </p>
+      </div>
+      <div>
+        <h4 data-i18n="footerQuick">দ্রুত সেবা লিংক</h4>
+        <a href="#/apply" data-i18n="ctaApply">নতুন আইনি আবেদন</a>
+        <a href="#/track" data-i18n="ctaTrack">আবেদন ট্র্যাকিং</a>
+        <a href="#/eligibility">যোগ্যতা যাচাই ক্যালকুলেটর</a>
+        <a href="#/services">সেবাসমূহ ও সুবিধা</a>
+        <a href="#/offices" data-i18n="navOffices">৬৪ জেলা অফিস ডিরেক্টরি</a>
+        <a href="#/dashboard" data-i18n="dashboard" style="color:#FDE68A;font-weight:700"> নাগরিক ড্যাশবোর্ড</a>
+      </div>
+      <div>
+        <h4 data-i18n="footerTopics">আইনি সহায়তার ক্ষেত্র</h4>
+        <a href="#/topic/family">পারিবারিক ও দেনমোহর বিরোধ</a>
+        <a href="#/topic/land">ভূমি ও খতিয়ান অধিকার</a>
+        <a href="#/topic/elder">পিতা-মাতার ভরণপোষণ আইন</a>
+        <a href="#/topic/civil">দেওয়ানি ও মধ্যস্থতা (ADR)</a>
+        <a href="#/topics" data-i18n="footerAllTopics">সব রিসোর্স লাইব্রেরি →</a>
+      </div>
+      <div>
+        <h4 data-i18n="footerContact">জরুরি হেল্পলাইন</h4>
+        <a href="tel:16699" style="font-weight:700;color:#FDE68A;font-size:1.05rem"> ১৬৬৯৯ (টোল-ফ্রি ২৪/৭)</a>
+        <a href="tel:109"> ১০৯ (নারী ও শিশু হেল্পলাইন)</a>
+        <a href="tel:999"> ৯৯৯ (জাতীয় জরুরি সেবা)</a>
+        <a href="tel:333"> ৩৩৩ (জাতীয় সেবা বাতায়ন)</a>
+        <span style="font-size:0.82rem;color:rgba(255,255,255,0.7);display:block;margin-top:6px">বিদেশ থেকে কল: +৮৮০ ৯৬১২ ৩৯ ১৬৬৯৯</span>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <span data-i18n="footerLine">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার · আইন, বিচার ও সংসদ বিষয়ক মন্ত্রণালয় · জাতীয় আইনগত সহায়তা প্রদান সংস্থা (NLASO)</span>
+        <span>© CoU JusticeLab ২০২৬ · সর্বস্বত্ব সংরক্ষিত</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ ভাসমান অ্যাকশন বাটন (Floating FABs) ============ -->
+  <div class="floating-fab-group">
+    <button id="chatFab" class="floating-fab fab-chat" aria-label="CoU JusticeLab AI আইনি সহকারী খুলুন" title="CoU JusticeLab AI">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+    </button>
+    <button id="floatingA11yBtn" class="floating-fab fab-a11y" aria-label="প্রবেশগম্যতা বিকল্প" title="প্রবেশগম্যতা">
+      <span style="font-size:18px"></span>
+    </button>
+  </div>
+
+  <!-- AI চ্যাট উইজেট -->
+  <div id="chatWidget" class="chat-widget hidden" role="dialog" aria-label="CoU JusticeLab AI সহায়ক">
+    <div class="chat-head">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:1.3rem"></span>
+        <div>
+          <strong data-i18n="aiTitle">CoU JusticeLab AI সহকারী</strong>
+          <small style="display:block;font-size:0.72rem;opacity:0.85">CoU JusticeLab · তাৎক্ষণিক আইনি দিকনির্দেশনা</small>
+        </div>
+      </div>
+      <button id="chatClose" class="icon-btn" aria-label="বন্ধ করুন" style="color:#fff;border-color:rgba(255,255,255,0.3)">✕</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="msg bot" data-i18n="aiHello">
+        আসসালামু আলাইকুম! আমি ডিজিটাল আইনি সহকারী। সরকারি খরচে বিনামূল্যে আইনি সেবা প্রাপ্তি, আবেদন পদ্ধতি, যোগ্যতা বা আপনার আইনি সমস্যা সম্পর্কে যেকোনো প্রশ্ন করুন।
+      </div>
+    </div>
+    <form class="chat-input" id="chatForm">
+      <input id="chatText" type="text" data-i18n-ph="aiInputPh" placeholder="আপনার আইনি প্রশ্ন লিখুন…" autocomplete="off">
+      <button class="btn btn-primary btn-sm" type="submit" data-i18n="send">পাঠান</button>
+    </form>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/js/i18n.js?v=8"></script>
+  <script src="/js/console.js?v=9"></script>
+  <script src="/js/app.js?v=19"></script>
+</body>
+</html>

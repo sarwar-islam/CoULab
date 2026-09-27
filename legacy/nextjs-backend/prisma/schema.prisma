@@ -1,0 +1,635 @@
+// ============================================================================
+// DLAS — Digital Legal Aid System (ADLASB Grand Finale: "Five Doors, One Record")
+// Data spine: ONE shared record architecture.
+//
+// Backbone (from the case PDF):
+//   ENTRY CHANNEL -> APPLICATION ID -> VERIFICATION / REVIEW -> CASE ID
+//   -> MEDIATION / LAWYER / REFERRAL / OTHER SERVICE -> FOLLOW-UP -> OUTCOME -> CLOSURE
+//
+// Design rules encoded here:
+//   G1  One record, many doors/providers  — every model references the same
+//       Application/Case row; channels never create side systems.
+//   G2  Provenance — every information entry carries a provenance tag.
+//   G3  Safe contact — ContactRule + ContactAttempt with recorded reason.
+//   G7  Tracked responsibility — Task has owner/status/next action.
+//   G10 End-to-end audit — append-only AuditEntry written by every service.
+//
+// NOTE: SQLite does not support Prisma enums; allowed values for every
+// "state" field are documented constants in src/lib/constants.ts and are
+// validated at the API boundary.
+// ============================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  // Hardcoded relative path (resolved against this schema file) so the repo
+  // runs with zero configuration after a fresh clone. The seeded demo
+  // database ships at prisma/dev.db. To override, point this at
+  // env("DATABASE_URL") and provide a .env file.
+  url      = "file:./dev.db"
+}
+
+// ---------------------------------------------------------------------------
+// Identity & access
+// ---------------------------------------------------------------------------
+
+/// Provider staff, UDC entrepreneurs, panel lawyers, helpline agents, and
+/// representatives. Citizens do NOT hold logins; they reach the system
+/// through the five doors (web status, IVR, USSD, assisted, walk-in).
+model User {
+  id             String    @id @default(cuid())
+  username       String    @unique
+  name           String
+  nameBn         String?
+  role           String // Role constant — see constants.ts
+  office         String? // District Legal Aid Office or institution name
+  phone          String?
+  lang           String    @default("bn")
+  pinHash        String // demo-only credential (SHA-256 of 4-6 digit PIN)
+  active         Boolean   @default(true)
+  createdAt      DateTime  @default(now())
+  sessions       Session[]
+  lawyerAssignments LawyerAssignment[]
+}
+
+/// Server-side session token (httpOnly cookie). Citizen "sessions" are
+/// scope-limited: citizenApplicationId restricts reads to one application.
+model Session {
+  id                   String   @id @default(cuid())
+  token                String   @unique
+  userId               String?
+  user                 User?    @relation(fields: [userId], references: [id])
+  citizenApplicationId String? // scope-limited citizen access (no login account)
+  citizenRole          String? // CITIZEN | REPRESENTATIVE (context of citizen access)
+  expiresAt            DateTime
+  createdAt            DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// Application (created at submission, from ANY door)
+// ---------------------------------------------------------------------------
+
+model Applicant {
+  id           String       @id @default(cuid())
+  fullName     String
+  district     String
+  upazila      String?
+  nidRef       String? // masked/illustrative reference only — NEVER a real NID
+  primaryPhone String? // may be the applicant's own OR an assisted-contact number
+  altPhone     String?
+  contactNote  String? // e.g. "number belongs to UDC entrepreneur"
+  applications Application[]
+  createdAt    DateTime     @default(now())
+}
+
+/// Application ID is minted at submission through any channel.
+/// A Case ID is created ONLY after acceptance (Application.status = ACCEPTED
+/// creates exactly one Case). Never the reverse.
+model Application {
+  id                      String     @id // APP-2026-#### (see lib/ids.ts)
+  applicantId             String
+  applicant               Applicant  @relation(fields: [applicantId], references: [id])
+  channel                 String // WEB | VOICE_IVR | USSD_SMS | ASSISTED_UDC | HELPLINE | DLAO_WALKIN
+  status                  String     @default("SUBMITTED") // SUBMITTED | UNDER_REVIEW | MORE_INFO_NEEDED | ACCEPTED | REJECTED | CONVERTED_TO_CASE
+  caseType                String // from published case-type list (constants.ts)
+  narrative               String
+  district                String
+  office                  String
+  language                String     @default("bn")
+  urgencyFlag             Boolean    @default(false)
+  sensitiveFlag           Boolean    @default(false) // restricted material (e.g. Nabila A3)
+  freeServiceNoticeShown  Boolean    @default(false) // B4 requirement
+  assistedByUserId        String? // UDC entrepreneur / representative (provenance)
+  helplineOperatorUserId  String? // 16699 agent creating assisted intake (B3)
+  intakeSessionId         String? // T5 conversational intake provenance
+  caseId                  String? // set when accepted
+  rejectionReason         String?
+  rejectionDecidedByUserId String?
+  createdAt               DateTime   @default(now())
+  updatedAt               DateTime   @updatedAt
+  entries                 RecordEntry[]
+  documents               DocumentRecord[]
+  consents                Consent[]
+  tasks                   Task[]
+  duplicateFlagsA         DuplicateCandidate[] @relation("appA")
+  duplicateFlagsB         DuplicateCandidate[] @relation("appB")
+  cases                   Case[]
+}
+
+// ---------------------------------------------------------------------------
+// Case (created only on acceptance; persists through referral/mediation/
+// lawyer assignment/closure) — THE one authoritative record
+// ---------------------------------------------------------------------------
+
+model Case {
+  id                 String       @id // CASE-2026-####
+  applicationId      String       @unique
+  application        Application  @relation(fields: [applicationId], references: [id])
+  status             String       @default("OPEN")
+  // OPEN | UNDER_REVIEW | IN_MEDIATION | LAWYER_ASSIGNED | IN_SERVICE | CLOSED
+  caseType           String
+  office             String // current responsible DLAO
+  district           String
+  jurisdiction       String       @default("DISTRICT_DLAO") // DISTRICT_DLAO | LABOUR_LEGAL_AID_CELL | ... (routing, T2)
+  priority           String       @default("MEDIUM") // LOW | MEDIUM | HIGH | URGENT
+  priorityReason     String?
+  prioritySource     String? // TRIAGE_RECOMMENDATION | OFFICER_DECISION (G5)
+  sensitivity        String       @default("NORMAL") // NORMAL | SENSITIVE | RESTRICTED (A3)
+  incidentGroupId    String? // T3 related-incident linking (link, never merge)
+  outcome            String? // recorded at closure
+  closedAt           DateTime?
+  closedByUserId     String?
+  acceptedByUserId   String
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+  entries            RecordEntry[]
+  documents          DocumentRecord[]
+  consents           Consent[]
+  tasks              Task[]
+  contactRules       ContactRule[]
+  contactAttempts    ContactAttempt[]
+  referrals          Referral[]
+  lawyerAssignments  LawyerAssignment[]
+  lawyerChangeRequests LawyerChangeRequest[]
+  hearings           Hearing[]
+  mediationSessions  MediationSession[]
+  settlementDrafts   SettlementDraft[]
+  triageRuns         TriageRun[]
+  notifications      Notification[]
+  sensitiveAccessLogs SensitiveAccessLog[]
+}
+
+// ---------------------------------------------------------------------------
+// Provenance-tagged record entries (G2)
+// Every statement in the record is distinguishable by WHO supplied it and HOW.
+// ---------------------------------------------------------------------------
+
+model RecordEntry {
+  id               String      @id @default(cuid())
+  applicationId    String?
+  application      Application? @relation(fields: [applicationId], references: [id])
+  caseId           String?
+  case             Case?       @relation(fields: [caseId], references: [id])
+  provenance       String // APPLICANT_CONFIRMED | REPRESENTATIVE_REPORTED | INTERMEDIARY_TRANSLATED | STAFF_ENTERED | AI_INFERRED
+  text             String // the entry as stored (e.g. Bangla translation)
+  originalText     String? // verbatim original (e.g. what Nuching said in Marma)
+  language         String      @default("bn")
+  statedByName     String // who the information is about / from
+  statedByRole     String // APPLICANT | REPRESENTATIVE | INTERMEDIARY | STAFF | AI
+  recordedByUserId String? // which staff/agent keyed it in
+  channel          String
+  kind             String      @default("STATEMENT") // STATEMENT | CORRECTION | WITHDRAWAL_NOTICE | NOTE
+  supersedesEntryId String? // corrections point at the entry they correct
+  withdrawn        Boolean     @default(false)
+  withdrawnReason  String?
+  withdrawnAt      DateTime?
+  createdAt        DateTime    @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// Representation & consent (A2 Ripon, A4/B4 Nuching/UDC)
+// ---------------------------------------------------------------------------
+
+model Consent {
+  id                  String      @id @default(cuid())
+  applicationId       String?
+  application         Application? @relation(fields: [applicationId], references: [id])
+  caseId              String?
+  case                Case?       @relation(fields: [caseId], references: [id])
+  scope               String // REPRESENTATION | ASSISTED_INTAKE | EVIDENCE_SHARE | DATA_PROCESSING
+  scopeDetail         String // exactly what was consented to (bounded authority)
+  authorityStatus     String      @default("ACTIVE") // PENDING | ACTIVE | REVOKED | EXPIRED | REJECTED
+  grantedByApplicantId String
+  representativeUserId String? // Ripon (A2)
+  representativeName  String
+  relationship        String
+  channel             String
+  grantedAt           DateTime    @default(now())
+  revokedAt           DateTime?
+  recordedByUserId    String?
+}
+
+// ---------------------------------------------------------------------------
+// Safe contact (G3, A1 Moyuri, A5 Malek)
+// ---------------------------------------------------------------------------
+
+model ContactRule {
+  id             String   @id @default(cuid())
+  caseId         String?
+  case           Case?    @relation(fields: [caseId], references: [id])
+  applicantId    String?
+  mode           String // ALLOW_ONLY | BLOCK_NUMBERS | BLOCK_ALL
+  safeNumber     String? // the only number that may be dialled (A1)
+  safeTimeWindow String? // e.g. "14:00-17:00" — call only when she controls the phone
+  blockedNumbers String   @default("[]") // JSON array of unsafe numbers
+  neutralWording Boolean  @default(true) // messages must never reveal case subject
+  reason         String // mandatory recorded reason (G3)
+  createdByUserId String
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+/// Every call/SMS attempt — including blocked ones — is logged (A5).
+model ContactAttempt {
+  id               String   @id @default(cuid())
+  caseId           String?
+  case             Case?    @relation(fields: [caseId], references: [id])
+  applicationId    String?
+  attemptedNumber  String
+  attemptType      String // CALL | IVR | SMS
+  claimedIdentity  String? // who answered / claimed
+  outcome          String // COMPLETED | BLOCKED_UNSAFE | OUTSIDE_WINDOW | NO_ANSWER | FAILED
+  notes            String?
+  attemptedByUserId String?
+  createdAt        DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// Task & notification engine (G7) — one engine, many consuming views
+// ---------------------------------------------------------------------------
+
+model Task {
+  id              String    @id @default(cuid())
+  caseId          String?
+  case            Case?     @relation(fields: [caseId], references: [id])
+  applicationId   String?
+  application     Application? @relation(fields: [applicationId], references: [id])
+  title           String
+  titleBn         String?
+  type            String // REVIEW | DOCUMENT_CHECK | MEDIATION_SCHEDULE | LAWYER_UPDATE | REFERRAL_ACK | STATUS_UPDATE | ROUTING_DECISION | TRIAGE_REVIEW | DUPLICATE_REVIEW | PAYMENT_RECONCILIATION | SAFETY_REVIEW | CORRECTION_REQUEST
+  ownerRole       String
+  ownerUserId     String?
+  dueAt           DateTime?
+  status          String    @default("OPEN") // OPEN | IN_PROGRESS | DONE | OVERDUE | CANCELLED
+  priority        String    @default("MEDIUM")
+  reason          String? // WHY it is flagged (B1: "reasons for every flag")
+  sourceModule    String? // T1 | T8 | B5 | REFERRAL_SERVICE | ...
+  completedByUserId String?
+  completedAt     DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model Notification {
+  id            String   @id @default(cuid())
+  caseId        String?
+  case          Case?    @relation(fields: [caseId], references: [id])
+  applicationId String?
+  targetRole    String?
+  targetUserId  String?
+  channel       String // SMS | USSD | IVR | IN_APP
+  message       String
+  neutralWording Boolean @default(false) // privacy-aware message text (G3)
+  status        String   @default("SENT") // QUEUED | SENT | FAILED
+  relatedModule String?
+  createdAt     DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// Documents (G6: versioned, never silently merged; missing/unclear surfaced)
+// ---------------------------------------------------------------------------
+
+model DocumentRecord {
+  id               String   @id @default(cuid())
+  applicationId    String?
+  application      Application? @relation(fields: [applicationId], references: [id])
+  caseId           String?
+  case             Case?    @relation(fields: [caseId], references: [id])
+  title            String
+  docType          String // NID | MEDICAL_REPORT | COURT_PAPER | LAND_DEED | PHOTO_EVIDENCE | FIR_COPY | OTHER
+  mimeType         String?
+  dataUrl          String? // small illustrative images / file content (base64)
+  textContent      String? // extractable text for AI briefing (T6)
+  sourceNote       String? // source reference (T6: "source every material point")
+  provenance       String // same provenance vocabulary as RecordEntry
+  uploadedByUserId String?
+  uploadedByName   String
+  version          Int      @default(1)
+  isCurrent        Boolean  @default(true)
+  status           String   @default("CURRENT") // CURRENT | SUPERSEDED | UNCLEAR | MISSING_REQUIRED
+  sensitivity      String   @default("NORMAL") // NORMAL | SENSITIVE | RESTRICTED (A3)
+  checksum         String? // SHA-256 of textContent/dataUrl (integrity, T9/T11)
+  aiBriefing       String? // T6 output (AI_INFERRED — officer verifies)
+  qualityFlags     String   @default("[]") // JSON: e.g. ["UNREADABLE","MISSING_SIGNATURE"]
+  incidentGroupId  String? // T3 shared evidence (linked to group, visible across cases)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+/// Per-case-type required documents (B4 checklist, T6 comparison baseline)
+model ChecklistTemplate {
+  id        String   @id @default(cuid())
+  caseType  String   @unique
+  itemsJson String // [{label, required, note}]
+  updatedAt DateTime @updatedAt
+}
+
+// ---------------------------------------------------------------------------
+// End-to-end audit (G10) — append-only; the Coverage Index reads from here
+// ---------------------------------------------------------------------------
+
+model AuditEntry {
+  id              String   @id @default(cuid())
+  actorUserId     String?
+  actorName       String
+  actorRole       String
+  channel         String
+  action          String
+  entityType      String
+  entityId        String
+  caseId          String?
+  applicationId   String?
+  before          String?
+  after           String?
+  reason          String? // mandatory for overrides/blocks
+  onWhoseAuthority String? // whose human authority the action was taken under (G10)
+  metadataJson    String?
+  createdAt       DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// Referral & routing (A3 Nabila, T2 jurisdiction ping-pong, B6 receiving DLAO)
+// ---------------------------------------------------------------------------
+
+model Referral {
+  id                String   @id @default(cuid())
+  caseId            String
+  case              Case     @relation(fields: [caseId], references: [id])
+  kind              String   @default("REFERRAL") // REFERRAL | JURISDICTION_TRANSFER (T2)
+  fromOffice        String
+  toOffice          String
+  reason            String
+  historySummary    String
+  documentIdsJson   String   @default("[]")
+  responsibleActor  String
+  expectedAction    String
+  deadline          DateTime
+  ackStatus         String   @default("SENT") // SENT | ACKNOWLEDGED | ACCEPTED | RETURNED | ESCALATED | ROUTED | COMPLETED
+  ackReason         String? // mandatory when returned (T2)
+  ackAt             DateTime?
+  ackDeadline       DateTime
+  returnCount       Int      @default(0)
+  escalationLevel   Int      @default(0)
+  finalRouteDecisionByUserId String? // authorised human (T2 guardrail)
+  finalRouteDecision String?
+  sensitive         Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+// ---------------------------------------------------------------------------
+// Panel lawyer management (A5 Malek, B5 lawyer, T1)
+// ---------------------------------------------------------------------------
+
+model LawyerAssignment {
+  id               String    @id @default(cuid())
+  caseId           String
+  case             Case      @relation(fields: [caseId], references: [id])
+  lawyerUserId     String
+  lawyer           User      @relation(fields: [lawyerUserId], references: [id])
+  status           String    @default("PROPOSED") // PROPOSED | ACCEPTED | DECLINED | REASSIGNED | RELEASED | COMPLETED
+  assignedAt       DateTime  @default(now())
+  acceptedAt       DateTime?
+  declinedReason   String?
+  stage            String    @default("PRE_LITIGATION") // PRE_LITIGATION | HEARING | PENDING_JUDGMENT | CLOSED
+  paymentStatus    String    @default("NOT_DUE") // NOT_DUE | PENDING_REVIEW | APPROVED | HOLD | PAID (T1 stage-based reconciliation)
+  paymentNote      String?
+  lastUpdateAt     DateTime?
+  inactivityFlaggedAt DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  updates          LawyerUpdate[]
+}
+
+model Hearing {
+  id                String   @id @default(cuid())
+  caseId            String
+  case              Case     @relation(fields: [caseId], references: [id])
+  lawyerAssignmentId String?
+  hearingDate       DateTime
+  location          String
+  status            String   @default("SCHEDULED") // SCHEDULED | HELD | MISSED | ADJOURNED
+  notes             String?
+  createdAt         DateTime @default(now())
+}
+
+model LawyerUpdate {
+  id                String   @id @default(cuid())
+  caseId            String
+  lawyerAssignmentId String
+  text              String
+  submittedAt       DateTime @default(now())
+  lawyer            LawyerAssignment? @relation(fields: [lawyerAssignmentId], references: [id])
+}
+
+/// T1: citizen lawyer-change request -> DLAO queue -> human review ->
+/// reassignment -> payment reconciliation. Pattern alerts are separate.
+model LawyerChangeRequest {
+  id             String    @id @default(cuid())
+  caseId         String
+  case           Case      @relation(fields: [caseId], references: [id])
+  requestedByName String
+  requestedByRole String // CITIZEN | REPRESENTATIVE
+  reason         String
+  status         String    @default("SUBMITTED") // SUBMITTED | UNDER_REVIEW | REASSIGNED | DISMISSED
+  reviewedByUserId String?
+  reviewNotes    String?
+  reviewDecision String?
+  decidedAt      DateTime?
+  createdAt      DateTime  @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// Mediation & settlement (B2 mediator, T7 drafting, T11 e-signature)
+// ---------------------------------------------------------------------------
+
+model MediationSession {
+  id                String    @id @default(cuid())
+  caseId            String
+  case              Case      @relation(fields: [caseId], references: [id])
+  mediatorUserId    String
+  scheduledAt       DateTime
+  mode              String    @default("IN_PERSON") // IN_PERSON | REMOTE | HYBRID (remote where appropriate; in-person fallback retained)
+  locationOrLink    String
+  partyAName        String
+  partyBName        String
+  attendanceJson    String    @default("{}") // {partyA: PRESENT|ABSENT|REMOTE, ...}
+  status            String    @default("SCHEDULED") // SCHEDULED | NOTICES_SENT | ATTENDED | COMPLETED | NO_SHOW | RESCHEDULED | FALLBACK_IN_PERSON
+  outcome           String? // SETTLED | PARTIALLY_SETTLED | NOT_SETTLED | ADJOURNED
+  outcomeDetails    String?
+  inPersonFallbackReason String?
+  noticesJson       String    @default("[]") // [{party, channel, sentAt, ack}]
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+/// T7: mediator notes -> draft grounded in approved template; AI-inferred
+/// spans visibly marked; inconsistency warnings; human review mandatory.
+model SettlementDraft {
+  id                 String   @id @default(cuid())
+  caseId             String
+  case               Case     @relation(fields: [caseId], references: [id])
+  mediationSessionId String?
+  templateType       String // MAINTENANCE | PROPERTY | LABOUR
+  mediatorNotes      String
+  draftText          String
+  aiSegmentsJson     String   @default("[]") // spans marked AI-inferred
+  warningsJson       String   @default("[]") // internal inconsistencies flagged
+  status             String   @default("DRAFT") // DRAFT | UNDER_HUMAN_REVIEW | HUMAN_REVIEWED | FINALIZED
+  reviewedByUserId   String?
+  reviewNotes        String?
+  finalizedText      String?
+  version            Int      @default(1)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  signatureSessions  SignatureSession[]
+}
+
+/// T11: asynchronous signing linked to the mediation record; each signature
+/// binds SHA-256(documentHash + signer + timestamp + nonce); independent
+/// verification recomputes. Cryptographic validity ≠ legal validity (guardrail).
+model SignatureSession {
+  id                String   @id @default(cuid())
+  caseId            String
+  settlementDraftId String
+  settlementDraft   SettlementDraft @relation(fields: [settlementDraftId], references: [id])
+  documentHash      String // SHA-256 of the exact finalized text version
+  docVersion        Int
+  partiesJson       String // [{name, role}]
+  status            String   @default("PENDING") // PENDING | PARTIAL | COMPLETED | VERIFIED
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  signatures        SignatureRecord[]
+}
+
+model SignatureRecord {
+  id             String   @id @default(cuid())
+  sessionId      String
+  session        SignatureSession @relation(fields: [sessionId], references: [id])
+  partyName      String
+  partyRole      String
+  signatureHash  String? // computed over documentHash+signer+ts+nonce
+  nonce          String
+  signedAt       DateTime?
+  method         String   @default("ONLINE") // ONLINE | OFFLINE_QUEUED (T11: one party offline)
+  syncStatus     String   @default("SYNCED") // PENDING | SYNCED
+  verified       Boolean?
+  verifiedAt     DateTime?
+  verifyResult   String?
+  createdAt      DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// T3 related-incident groups (link, do not merge)
+// ---------------------------------------------------------------------------
+
+model IncidentGroup {
+  id          String   @id @default(cuid())
+  name        String
+  incidentDate DateTime?
+  location    String?
+  description String
+  createdById String
+  createdAt   DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// T4 duplicate / fraud-risk detection — never auto-reject, auto-merge, label
+// ---------------------------------------------------------------------------
+
+model DuplicateCandidate {
+  id                  String   @id @default(cuid())
+  applicationAId      String
+  applicationA        Application @relation("appA", fields: [applicationAId], references: [id])
+  applicationBId      String
+  applicationB        Application @relation("appB", fields: [applicationBId], references: [id])
+  score               Int // 0-100 multi-attribute similarity
+  matchedFieldsJson   String // [{field, valueA, valueB, similarity}]
+  status              String   @default("PENDING") // PENDING | CONFIRMED_DUPLICATE | NOT_A_DUPLICATE
+  reviewedByUserId    String?
+  reviewNotes         String?
+  decidedAt           DateTime?
+  createdAt           DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// T8 multi-agent triage pipeline — recommend, never decide (G5)
+// ---------------------------------------------------------------------------
+
+model TriageRun {
+  id                    String   @id @default(cuid())
+  caseId                String?
+  case                  Case?    @relation(fields: [caseId], references: [id])
+  applicationId         String?
+  categoryResultJson    String // agent 1: categorisation + evidence
+  complianceResultJson  String // agent 2: compliance/process checks + evidence
+  orchestrationResultJson String // agent 3: priority/routing recommendation + conflicts
+  conflictsDetected     Boolean  @default(false)
+  finalRecommendation   String
+  status                String   @default("RECOMMENDED") // RECOMMENDED | HUMAN_REVIEWED | OVERRIDDEN
+  decision              String?
+  humanDecisionByUserId String?
+  humanDecisionReason   String?
+  createdAt             DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// T9 offline-first sync — temp UUIDs, idempotent, conflicts to human review
+// ---------------------------------------------------------------------------
+
+model OfflineSyncRecord {
+  id             String   @id @default(cuid())
+  tempUuid       String   @unique // client-generated UUID (dedup key)
+  deviceId       String
+  payloadType    String // APPLICATION | STATEMENT | DOCUMENT
+  payloadJson    String
+  integrityHash  String // SHA-256 of payload (verified on server)
+  status         String   @default("QUEUED") // QUEUED | SYNCED | CONFLICT | DUPLICATE_REJECTED
+  conflictWithId String? // routed to human review, never silently overwritten
+  resolution     String?
+  syncedAt       DateTime?
+  syncedEntityId String? // created Application/Entry/Document id
+  createdAt      DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// T5 conversational intake sessions (slot-fill, provenance, human handoff)
+// ---------------------------------------------------------------------------
+
+model IntakeSession {
+  id             String   @id @default(cuid())
+  channel        String // WEB_CHAT | VOICE | HELPLINE | UDC
+  language       String   @default("bn")
+  citizenName    String?
+  slotsJson      String   @default("{}") // approved fields only
+  transcriptJson String   @default("[]") // [{role, text, ts}]
+  status         String   @default("IN_PROGRESS") // IN_PROGRESS | AWAITING_CONFIRMATION | HUMAN_HANDOFF | CONVERTED
+  sensitiveFlag  Boolean  @default(false)
+  handoffReason  String?
+  operatorUserId String? // 16699 agent if helpline-created
+  applicationId  String? // created Application (same record — G1)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+/// A3: every access to sensitive/restricted material is logged
+model SensitiveAccessLog {
+  id              String   @id @default(cuid())
+  caseId          String?
+  case            Case?    @relation(fields: [caseId], references: [id])
+  documentId      String?
+  accessedByUserId String
+  actorRole       String
+  purpose         String?
+  accessedAt      DateTime @default(now())
+}
+
+/// Sequential ID counters (APP-2026-####, CASE-2026-####)
+model Counter {
+  key   String @id
+  value Int    @default(0)
+}
